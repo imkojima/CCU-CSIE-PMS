@@ -150,7 +150,7 @@
                         }
                         echo "
                             </td>
-                            <td data-title=\"執行\"><div class=\"btn-group\"><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#detail\" href=\"modal_reserve_detail.php?r_id=".$reserves[$i]['r_id']."\">詳細資料</button><button class=\"btn\" data-toggle=\"modal\" data-target=\"#cancel_reserve\" href=\"reserve_cancel.php?r_id=".$reserves[$i]['r_id']."&page=account\">取消預約</button></div></td>
+                            <td data-title=\"執行\"><div class=\"btn-group\"><button class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#detail\" href=\"modal_reserve_detail.php?r_id=".$reserves[$i]['r_id']."\">詳細資料</button><button class=\"btn\" data-toggle=\"modal\" data-target=\"#cancel_reserve\" href=\"modal_reserve_cancel.php?r_id=".$reserves[$i]['r_id']."&page=account\">取消預約</button></div></td>
                           </tr>
                         ";
                       }
