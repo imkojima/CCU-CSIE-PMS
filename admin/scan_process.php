@@ -67,7 +67,7 @@
 					$reserves = getUserReserveAccount($barcode, 'avaliable');
 					echo "<pre>";
 					print_r($reserves);
-					ecoh "</pre>";
+					echo "</pre>";
 					//echo "<blockquote>單槍投影機(2) <button class=\"btn btn-primary\">取用</button></blockquote>";
 
 					echo "<h4>借用中待還</h4>";
