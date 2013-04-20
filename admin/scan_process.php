@@ -62,8 +62,8 @@
 			if($type == "User"){
 				if( getUserPerm($barcode) != 'empty'){
 					echo "<legend>使用者 : ".getUserName($barcode)." - ".$barcode."</legend>";
+
 					echo "<h4>審核過待取</h4>";
-					/* $reserves[$i]['r_state'] == 1 審核通過 待取 */
 					$reserves = getUserReserveAccount($barcode, 'avaliable');
 					if (count($reserves) <= 1) {
 						echo "<blockquote>無</blockquote>";
@@ -71,15 +71,9 @@
 						for ($i=0; $i < count( $reserves )-1; $i++) {
 							echo "<blockquote>".getPropertyName($reserves[$i]['p_id'])."(".$reserves[$i]['r_id'].") <button class=\"btn btn-primary\">取用</button></blockquote>";
 						}
-						echo "<pre>";
-						print_r($reserves);
-						echo "</pre>";
 					}
-					//echo "<blockquote>單槍投影機(2) <button class=\"btn btn-primary\">取用</button></blockquote>";
 
 					echo "<h4>借用中待還</h4>";
-
-					// $reserves[$i]['r_state'] == 2 借用中
 					$reserves = getUserReserveAccount($barcode, 'borrowed');
 					if (count($reserves) <= 1) {
 						echo "<blockquote>無</blockquote>";
@@ -87,9 +81,6 @@
 						for ($i=0; $i < count( $reserves )-1; $i++) {
 							echo "<blockquote>".getPropertyName($reserves[$i]['p_id'])."(".$reserves[$i]['r_id'].") <button class=\"btn btn-primary\">歸還</button></blockquote>";
 						}
-						echo "<pre>";
-						print_r($reserves);
-						echo "</pre>";
 					}
 
 					echo "<center><button onClick=\"javascript:window.history.back();\" class=\"btn btn-large\">返回</button></center>";
@@ -102,13 +93,14 @@
 			}
 			if($type == "Property"){
 				$pid = getPropertyIDByAcc($barcode);
-				echo "<legend>物品 : ".getPropertyName($pid)."(".$pid.")</legend>";
-				//找尋此物品目前狀況
-				if(getPropertyState($pid) == 1){
-					echo "目前此物品以借出予 ...";
-					echo "<button class=\"btn btn-large btn-primary\">歸還</button>";
-				}else{	
-					echo "目前此物品尚未借出<hr/>";
+				if($pid != 0){
+					echo "<legend>物品 : ".getPropertyName($pid)."(".$pid.")</legend>";
+					//找尋此物品目前狀況
+					if(getPropertyState($pid) == 1){
+						echo "目前此物品以借出予 ...";
+						echo "<button class=\"btn btn-large btn-primary\">歸還</button>";
+					}else{	
+						echo "目前此物品尚未借出<hr/>";
 ?>
          <form class="form-horizontal" action="scan_result.php">
           <fieldset>
@@ -128,12 +120,14 @@
           </fieldset>
         </form> 
 <?php
+					}
 				}
-			}
-			if($type == "Other"){
-				echo "<legend>其他</legend>";
-				echo "您輸入的是正確的編碼嗎？";
-				//例外狀況
+				if($type == "Other"){
+					echo "<legend>其他</legend>";
+					echo "您輸入的是正確的編碼嗎？";
+					echo "<center><button onClick=\"javascript:window.history.back();\" class=\"btn btn-large\">返回</button></center>";
+					//例外狀況
+				}
 			}
 		?>
       </div>
