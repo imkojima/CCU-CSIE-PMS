@@ -200,4 +200,10 @@ function returnReserve( $r_id ){
     $usr->my_query($sql_property,2); 
 }
 
+function setReserveDays( $r_id , $r_days){
+    $usr = new pms_db();
+    $sql = "UPDATE `Reserve` SET `r_days` = '".$r_days."' WHERE `r_id`='".$r_id."'";
+    $usr->my_query($sql,2); 
+}
+
 ?>
