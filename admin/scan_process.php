@@ -65,14 +65,18 @@
 					echo "<h4>審核過待取</h4>";
 					/* $reserves[$i]['r_state'] == 1 審核通過 待取 */
 					$reserves = getUserReserveAccount($barcode, 'avaliable');
+					echo "<pre>";
 					print_r($reserves);
+					ecoh "</pre>";
 					//echo "<blockquote>單槍投影機(2) <button class=\"btn btn-primary\">取用</button></blockquote>";
 
 					echo "<h4>借用中待還</h4>";
 
 					// $reserves[$i]['r_state'] == 2 借用中
 					$reserves = getUserReserveAccount($barcode, 'borrowed');
+					echo "<pre>";
 					print_r($reserves);
+					echo "</pre>";
 					//echo "<blockquote>無</blockquote>";
 	
 					echo "<center><button onClick=\"javascript:window.history.back();\" class=\"btn btn-large\">返回</button></center>";
