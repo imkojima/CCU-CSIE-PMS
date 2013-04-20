@@ -18,6 +18,7 @@
 ?>
 <?php if(getUserPerm($_SESSION['ccupms_acc'])=='empty'){ 
 	addUser('',$_SESSION['ccupms_acc'],'',0,'','',0);
+	makeLog($_SESSION['ccupms_acc'],'初次建立 - ['.$_SESSION['ccupms_acc'].']');
 ?>
     <div class="alert" id="firstLogin">
       <a class="close" onclick="loginMsg('firstLogin')">×</a>
