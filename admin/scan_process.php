@@ -62,14 +62,9 @@
 				if( getUserPerm($barcode) != 'empty'){
 					echo "<legend>使用者 : ".getUserName($barcode)." - ".$barcode."</legend>";
 					echo "<h4>審核過待取</h4>";
-
-					// $reserves[$i]['r_state'] == 1 審核通過 待取
+					/* $reserves[$i]['r_state'] == 1 審核通過 待取 */
 					$reserves = getUserReserveAccount($barcode, 'avaliable');
-					if (count($reserves) <= 1)
-						echo "none";
-					echo "<pre>";
-					var_dump($reserves);
-					echo "</pre>";
+					print_r($reserves);
 					//echo "<blockquote>單槍投影機(2) <button class=\"btn btn-primary\">取用</button></blockquote>";
 
 					echo "<h4>借用中待還</h4>";
