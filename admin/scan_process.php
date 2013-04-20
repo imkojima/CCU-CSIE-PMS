@@ -72,6 +72,7 @@
 
 					// $reserves[$i]['r_state'] == 2 借用中
 					$reserves = getUserReserveAccount($barcode, 'borrowed');
+					print_r($reserves);
 					//echo "<blockquote>無</blockquote>";
 	
 					echo "<center><button onClick=\"javascript:window.history.back();\" class=\"btn btn-large\">返回</button></center>";
