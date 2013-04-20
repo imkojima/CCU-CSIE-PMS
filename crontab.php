@@ -3,7 +3,7 @@
 require_once('libs/reserve.php');
 
 /* Crontabl Daily Script */
-$reserves = getReserveList()
+$reserves = getReserveList();
 
 echo "<pre>";
 print_r($reserves);
