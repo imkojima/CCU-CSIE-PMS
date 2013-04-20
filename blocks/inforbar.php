@@ -16,7 +16,7 @@
     along with CCU CSIE Property Management System.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<?php if(getUserPerm($_SESSION['ccupms_acc'])=='empty'){ 
+<?php if(getUserPerm($_SESSION['ccupms_acc'])=='empty' && $_SESSION['ccupms_acc'] != ''){ 
 	addUser('',$_SESSION['ccupms_acc'],'',0,'','',0);
 	makeLog($_SESSION['ccupms_acc'],'初次建立 - ['.$_SESSION['ccupms_acc'].']');
 ?>
