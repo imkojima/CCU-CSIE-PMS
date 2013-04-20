@@ -220,49 +220,54 @@
   <script type="text/javascript" src="js/jquery.metadata.js"></script>
   <script type="text/javascript" src="js/jquery.tablecloth.js"></script>
   <script type="text/javascript">
-
-  $(document).ready(function(){
-    $(window).load(function(){
-      $('#done').modal('show');
+    $(document).ready(function() {
+        $(window).load(function() {
+            $('#done').modal('show');
+        });
     });
-  });
 
-  $("#done").on('hidden', function () {
-  	location.reload();
-  });
-
-  $('body').on('hidden', '.modal', function () {
-    $(this).removeData('modal');
-  });
-
-  $("a[data-target=#detail]").click(function(ev) {
-    ev.preventDefault();
-    var target = $(this).attr("href");
-
-    // load the url and show modal on success
-    $("#detail .modal-body").load(target, function() { 
-        $("#detail").modal("show"); 
+    $("#done").on('hidden', function() {
+        location.reload();
     });
-  });
 
-  $("a[data-target=#modal]").click(function(ev) {
-    ev.preventDefault();
-    var target = $(this).attr("href");
+    $('body').on('hidden', '.modal', function() {
+        $(this).removeData('modal');
+    });
 
-    // load the url and show modal on success
-    $("#modal .modal-body").load(target, function() { 
-        $("#modal").modal("show"); 
+    $("a[data-target=#detail]").click(function(ev) {
+        ev.preventDefault();
+        var target = $(this).attr("href");
+
+        // load the url and show modal on success
+        $("#detail .modal-body").load(target, function() {
+            $("#detail").modal("show");
+        });
     });
-  });
-  $(document).ready(function() {
-    $("table").tablesorter({
-      headers: {2:{sorter:false}, 4:{sorter:false}},
-      sortList: [[0,1]]
-    })
-    .tablesorterPager({
-      container: $("#npager")
+
+    $("a[data-target=#modal]").click(function(ev) {
+        ev.preventDefault();
+        var target = $(this).attr("href");
+
+        // load the url and show modal on success
+        $("#modal .modal-body").load(target, function() {
+            $("#modal").modal("show");
+        });
     });
-  });
+    $(document).ready(function() {
+        $("table").tablesorter({
+            headers: {
+                2: {
+                    sorter: false
+                },
+                4: {
+                    sorter: false
+                }
+            },
+            sortList: [[0, 1]]
+        }).tablesorterPager({
+            container: $("#npager")
+        });
+    });
   </script>
   </body>
 </html>

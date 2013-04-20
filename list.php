@@ -16,10 +16,10 @@
     along with CCU CSIE Property Management System.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-  require_once("auth.php");
-  require_once("libs/property.php");
-  require_once("libs/reserve.php");
-  require_once("libs/logs.php");
+require_once "auth.php";
+require_once "libs/property.php";
+require_once "libs/reserve.php";
+require_once "libs/logs.php";
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +45,7 @@
 
   <body>
 
-  <? include_once($PATH."blocks/navbar.php"); ?>
+  <?php include_once $PATH."blocks/navbar.php"; ?>
 
   <div class="container" >
 
@@ -53,31 +53,31 @@
       <ul class="breadcrumb">
         <li><a href="index.php">首頁</a> <span class="divider">/</span></li>
         <li class="active">借用</li>
-		<?php if($_GET['search']=='yes'){ ?>
-		<span class="divider">-</span></li>
-		<li class="active">搜尋: <?php echo htmlspecialchars(addslashes($_GET['query']));?></li>
-		<?php } ?>
+    <?php if ( $_GET['search']=='yes' ) { ?>
+    <span class="divider">-</span></li>
+    <li class="active">搜尋: <?php echo htmlspecialchars( addslashes( $_GET['query'] ) );?></li>
+    <?php } ?>
       </ul>
 
       <div class="pull-right">
         <form class="form-search">
-		  <input type="hidden" name="search" value="yes"> 
+      <input type="hidden" name="search" value="yes">
           <select name="class" class="span2">
             <option value="full">全文</option>
             <option value="title">名稱</option>
-			<option value="description">描述</option>
-			<option value="accno">財產編號</option>
+      <option value="description">描述</option>
+      <option value="accno">財產編號</option>
 <!--            <option value="place">地點</option>
             <option value="keeper">保管者</option> -->
           </select>
           <div class="input-append">
-            <input type="text" name="query" class="span4 search-query" placeholder="<?php echo (htmlspecialchars(addslashes($_GET['query'])) =='')?"在找些什麼嗎？":htmlspecialchars(addslashes($_GET['query'])); ?>">
-			<button type="submit" class="btn">搜尋</button>
+            <input type="text" name="query" class="span4 search-query" placeholder="<?php echo ( htmlspecialchars( addslashes( $_GET['query'] ) ) =='' )?"在找些什麼嗎？":htmlspecialchars( addslashes( $_GET['query'] ) ); ?>">
+      <button type="submit" class="btn">搜尋</button>
           </div>
         </form>
-    	</div>
+      </div>
 
-  	  <table class="table table-bordered table-striped responsive-table" id="property-list">
+      <table class="table table-bordered table-striped responsive-table" id="property-list">
         <thead>
           <tr>
             <th width="50px">編號</th>
@@ -90,41 +90,41 @@
         <tbody>
 <!-- READ Database here for list -->
 <?php
-		if($_GET['search']="yes")
-			$properties = getPropertyBySearch($_GET['class'], htmlspecialchars(addslashes($_GET['query'])));	
-		else
-	        $properties = getPropertyList();
-		if(count( $properties ) <= 1)
-			echo "<tr><td colspan=\"5\">尚無記錄</td></tr>";
-		else
-        for ($i=0; $i < count( $properties )-1; $i++) {
-          echo "
-            <tr"; if($properties[$i]['p_state'] == 2) echo " class=\"warning\""; elseif($properties[$i]['p_state'] == 3) echo " class=\"error\""; echo ">
+if ( $_GET['search']="yes" )
+  $properties = getPropertyBySearch( $_GET['class'], htmlspecialchars( addslashes( $_GET['query'] ) ) );
+else
+  $properties = getPropertyList();
+if ( count( $properties ) <= 1 )
+  echo "<tr><td colspan=\"5\">尚無記錄</td></tr>";
+else
+  for ( $i=0; $i < count( $properties )-1; $i++ ) {
+  echo "
+            <tr"; if ( $properties[$i]['p_state'] == 2 ) echo " class=\"warning\""; elseif ( $properties[$i]['p_state'] == 3 ) echo " class=\"error\""; echo ">
               <td data-title=\"編號\">".$properties[$i]['p_id']."</td>
               <td data-title=\"財產名稱\">".$properties[$i]['p_name']."</td>
               <td data-title=\"描述\">".$properties[$i]['model']."</td>
           ";
-          echo "<td data-title=\"狀態\">";
-          switch ($properties[$i]['p_state']) {
-            case 0:
-              echo "可預約";
-              break;
-            case 1:
-              echo "已被借用，可預約";
-              break;
-            case 2:
-              echo "不可預約";
-              break;
-            case 3:
-              echo "遺失";
-              break;
-            default:
-              echo "未知";
-              break;
-          }
-          echo "<td data-title=\"執行\"><div class=\"btn-group\"><a "; if($properties[$i]['p_state'] <=1) echo "data-toggle=\"modal\" href=\"modal_reserve.php?p_id=".$properties[$i]['p_id']."\" data-target=\"#modal\""; echo "role=\"button\" class=\"btn btn-primary\""; if($properties[$i]['p_state']>1) echo "disabled"; echo ">預約</a><a data-toggle=\"modal\" href=\"modal_property_detail.php?id=".$properties[$i]['p_id']."\" data-target=\"#infor\" role=\"button\" class=\"btn\">詳細資訊</a></div></td>
+  echo "<td data-title=\"狀態\">";
+  switch ( $properties[$i]['p_state'] ) {
+  case 0:
+    echo "可預約";
+    break;
+  case 1:
+    echo "已被借用，可預約";
+    break;
+  case 2:
+    echo "不可預約";
+    break;
+  case 3:
+    echo "遺失";
+    break;
+  default:
+    echo "未知";
+    break;
+  }
+  echo "<td data-title=\"執行\"><div class=\"btn-group\"><a "; if ( $properties[$i]['p_state'] <=1 ) echo "data-toggle=\"modal\" href=\"modal_reserve.php?p_id=".$properties[$i]['p_id']."\" data-target=\"#modal\""; echo "role=\"button\" class=\"btn btn-primary\""; if ( $properties[$i]['p_state']>1 ) echo "disabled"; echo ">預約</a><a data-toggle=\"modal\" href=\"modal_property_detail.php?id=".$properties[$i]['p_id']."\" data-target=\"#infor\" role=\"button\" class=\"btn\">詳細資訊</a></div></td>
           </tr>";
-        }
+}
 ?>
         </tbody>
       </table>
@@ -144,7 +144,7 @@
               </select>
           </form>
         </div>
-        <div class="span3"style="width:120px;"><p>共有 <span class="badge badge-info"><?php echo count($properties)-1; ?></span> 筆結果</p></div>
+        <div class="span3"style="width:120px;"><p>共有 <span class="badge badge-info"><?php echo count( $properties )-1; ?></span> 筆結果</p></div>
       </div>
     </section>
 
@@ -186,45 +186,45 @@
   <!--Record List Modal End-->
 
   <?php
-  if($_POST['action'] == "done") {
-	$results = makeReserve( $_POST['p_id'],'id',$_SESSION['ccupms_acc'],date("Y-m-d H:i:s"),htmlspecialchars(addslashes($_POST['expired_days'])),htmlspecialchars(addslashes($_POST['reason'])));
-  	
-      echo "
+if ( $_POST['action'] == "done" ) {
+  $results = makeReserve( $_POST['p_id'], 'id', $_SESSION['ccupms_acc'], date( "Y-m-d H:i:s" ), htmlspecialchars( addslashes( $_POST['expired_days'] ) ), htmlspecialchars( addslashes( $_POST['reason'] ) ) );
+
+  echo "
       <div class=\"modal hide\" id=\"reserve_done\" role=\"dialog\">
         <div class=\"modal-header\">
           <button class=\"close\" data-dismiss=\"modal\">×</button>";
-          
-	  if($results == "EXIST") {
-          echo "<h3>預約失敗！</h3>"; 
-          makeLog($_SESSION['ccupms_acc'], "重複預約 - [".$_SESSION['ccupms_acc']."]");
-      }
-      else {
-	      echo "<h3>預約成功！</h3>"; 
-	      makeLog($_SESSION['ccupms_acc'], "預約成功 - [".$results."]");
-      }
-      
-      echo "
+
+  if ( $results == "EXIST" ) {
+    echo "<h3>預約失敗！</h3>";
+    makeLog( $_SESSION['ccupms_acc'], "重複預約 - [".$_SESSION['ccupms_acc']."]" );
+  }
+  else {
+    echo "<h3>預約成功！</h3>";
+    makeLog( $_SESSION['ccupms_acc'], "預約成功 - [".$results."]" );
+  }
+
+  echo "
         </div>
         <div class=\"modal-body\">";
-        
-      if($results == "EXIST") {
-	      echo "<blockquote>您已經預約過了！</blockquote>";
-      }
-      else {
-	      echo "<h4>借用物品</h4><blockquote>".$_POST['p_name']."</blockquote>";
-	      echo "<h4>天數</h4><blockquote>".htmlspecialchars(addslashes($_POST['expired_days']))."</blockquote>";
-	      echo "<h4>送出時間</h4><blockquote>".date("Y-m-d H:i:s")."</blockquote>";
-	      echo "<h4>理由</h4><blockquote>".htmlspecialchars(addslashes($_POST['reason']))."</blockquote>";
-      }
-      
-      echo "
+
+  if ( $results == "EXIST" ) {
+    echo "<blockquote>您已經預約過了！</blockquote>";
+  }
+  else {
+    echo "<h4>借用物品</h4><blockquote>".$_POST['p_name']."</blockquote>";
+    echo "<h4>天數</h4><blockquote>".htmlspecialchars( addslashes( $_POST['expired_days'] ) )."</blockquote>";
+    echo "<h4>送出時間</h4><blockquote>".date( "Y-m-d H:i:s" )."</blockquote>";
+    echo "<h4>理由</h4><blockquote>".htmlspecialchars( addslashes( $_POST['reason'] ) )."</blockquote>";
+  }
+
+  echo "
       </div>
       <div class=\"modal-footer\">
         <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
       </div>
       </div>";
-    }
-  ?>
+}
+?>
 
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
@@ -233,46 +233,42 @@
   <script type="text/javascript" src="js/jquery.metadata.js"></script>
   <script type="text/javascript" src="js/jquery.tablecloth.js"></script>
   <script type="text/javascript">
-
-  $(window).load(function(){
-    $('#reserve_done').modal('show');
-  });
-
-  $("a[data-target=#infor]").click(function(ev) {
-    ev.preventDefault();
-    var target = $(this).attr("href");
-
-    // load the url and show modal on success
-    $("#infor .modal-body").load(target, function() {
-        $("#infor").modal("show");
+    $(window).load(function() {
+        $('#reserve_done').modal('show');
     });
-  });
-
-  $("a[data-target=#modal]").click(function(ev) {
-    ev.preventDefault();
-    var target = $(this).attr("href");
-
-    // load the url and show modal on success
-    $("#modal .modal-body").load(target, function() {
-        $("#modal").modal("show");
+    $("a[data-target=#infor]").click(function(ev) {
+        ev.preventDefault();
+        var target = $(this).attr("href");
+        // load the url and show modal on success
+        $("#infor .modal-body").load(target, function() {
+            $("#infor").modal("show");
+        });
     });
-  });
-
-  $("#reserve_done").on('hidden', function () {
-	location.reload();
-  }); 
-
-  $(document).ready(function() {
-    $('#property-list')
-    .tablesorter({
-      headers: {4:{sorter:false}},
-      sortList: [[0,0]]
-    })
-    .tablesorterPager({
-      container: $("#npager")
+    $("a[data-target=#modal]").click(function(ev) {
+        ev.preventDefault();
+        var target = $(this).attr("href");
+        // load the url and show modal on success
+        $("#modal .modal-body").load(target, function() {
+            $("#modal").modal("show");
+        });
     });
-  });
+    $("#reserve_done").on('hidden', function() {
+        location.reload();
+    });
+    $(document).ready(function() {
+        $('#property-list').tablesorter({
+            headers: {
+                4: {
+                    sorter: false
+                }
+            },
+            sortList: [
+                [0, 0]
+                ]
+        }).tablesorterPager({
+            container: $("#npager")
+        });
+    });
   </script>
   </body>
 </html>
-

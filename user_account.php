@@ -92,7 +92,7 @@
                     <blockquote><?php echo getUserMail($_SESSION['ccupms_acc']);?></blockquote>
                 </dl>
                 <div style="text-align:center;">
-                  <button class="btn btn-primary" data-toggle="modal" data-target="#edit" href="edit_account.php">編輯資料</button>
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#edit" href="modal_edit_account.php">編輯資料</button>
                 </div>
               </div>
               <div class="thumbnail span9">
@@ -322,56 +322,59 @@
     <script type="text/javascript" src="js/jquery.tablecloth.js"></script>
 
     <script type="text/javascript">
-
-      $(document).ready(function(){
-        $(window).load(function(){
-          $('#done').modal('show');
-        });
+      $(document).ready(function() {
+          $(window).load(function() {
+              $('#done').modal('show');
+          });
       });
 
-  	  $("#cancel_reserve").on('hidden', function () {
-		location.reload();
-   	  });	  
+      $("#cancel_reserve").on('hidden', function() {
+          location.reload();
+      });
 
-  	  $("#done").on('hidden', function () {
-		location.reload();
-   	  });	  
+      $("#done").on('hidden', function() {
+          location.reload();
+      });
 
       $("a[data-target=#edit]").click(function(ev) {
-        ev.preventDefault();
-        var target = $(this).attr("href");
+          ev.preventDefault();
+          var target = $(this).attr("href");
 
-        // load the url and show modal on success
-        $("#edit .modal-body").load(target, function() { 
-            $("#edit").modal("show"); 
-        });
+          // load the url and show modal on success
+          $("#edit .modal-body").load(target, function() {
+              $("#edit").modal("show");
+          });
       });
 
       $("a[data-target=#cancel_reserve]").click(function(ev) {
-        ev.preventDefault();
-        var target = $(this).attr("href");
+          ev.preventDefault();
+          var target = $(this).attr("href");
 
-        // load the url and show modal on success
-        $("#cancel_reserve .modal-body").load(target, function() { 
-            $("#cancel_reserve").modal("show"); 
-        });
+          // load the url and show modal on success
+          $("#cancel_reserve .modal-body").load(target, function() {
+              $("#cancel_reserve").modal("show");
+          });
       });
 
       $("a[data-target=#detail]").click(function(ev) {
-        ev.preventDefault();
-        var target = $(this).attr("href");
+          ev.preventDefault();
+          var target = $(this).attr("href");
 
-        // load the url and show modal on success
-        $("#detail .modal-body").load(target, function() { 
-            $("#detail").modal("show"); 
-        });
+          // load the url and show modal on success
+          $("#detail .modal-body").load(target, function() {
+              $("#detail").modal("show");
+          });
       });
 
       $(document).ready(function() {
-        $("table").tablesorter({
-          headers: {3:{sorter:false}},
-          sortList: [[0,1]]
-        });
+          $("table").tablesorter({
+              headers: {
+                  3: {
+                      sorter: false
+                  }
+              },
+              sortList: [[0, 1]]
+          });
       });
     </script>
  </body>

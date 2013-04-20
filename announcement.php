@@ -112,32 +112,35 @@
   <script type="text/javascript" src="js/jquery.metadata.js"></script>
   <script type="text/javascript" src="js/jquery.tablecloth.js"></script>
   <script type="text/javascript">
+    $("a[data-target=#infor]").click(function(ev) {
+        ev.preventDefault();
+        var target = $(this).attr("href");
 
-  $("a[data-target=#infor]").click(function(ev) {
-    ev.preventDefault();
-    var target = $(this).attr("href");
-
-    // load the url and show modal on success
-    $("#infor .modal-body").load(target, function() { 
-        $("#infor").modal("show"); 
+        // load the url and show modal on success
+        $("#infor .modal-body").load(target, function() {
+            $("#infor").modal("show");
+        });
     });
-  });
 
-  $("a[data-target=#modal]").click(function(ev) {
-    ev.preventDefault();
-    var target = $(this).attr("href");
+    $("a[data-target=#modal]").click(function(ev) {
+        ev.preventDefault();
+        var target = $(this).attr("href");
 
-    // load the url and show modal on success
-    $("#modal .modal-body").load(target, function() { 
-        $("#modal").modal("show"); 
+        // load the url and show modal on success
+        $("#modal .modal-body").load(target, function() {
+            $("#modal").modal("show");
+        });
     });
-  });
-  $(document).ready(function() {
-    $('#table_list').tablesorter({
-      headers: {5:{sorter:false}},
-      sortList: [[0,0]]
+    $(document).ready(function() {
+        $('#table_list').tablesorter({
+            headers: {
+                5: {
+                    sorter: false
+                }
+            },
+            sortList: [[0, 0]]
+        });
     });
-  });
   </script>
   </body>
 </html>
