@@ -59,13 +59,28 @@
 	  <div class="">
 		<?php 
 			if($type == "User"){
-				echo "<legend>使用者 : ".getUserName($barcode)." - ".$barcode."</legend>";
-				echo "<h4>審核過待取</h4>";
-				echo "<blockquote>單槍投影機(2) <button class=\"btn btn-primary\">取用</button></blockquote>";
-				echo "<h4>借用中待還</h4>";
-				echo "<blockquote>無</blockquote>";
-				echo "<center><button onClick=\"javascript:window.history.back();\" class=\"btn btn-large\">返回</button></center>";
-				//找尋此學生目前所有審核過待取/借用中待還的紀錄
+				if( getUserPerm($barcode) != 'empty'){
+					echo "<legend>使用者 : ".getUserName($barcode)." - ".$barcode."</legend>";
+					echo "<h4>審核過待取</h4>";
+
+					// $reserves[$i]['r_state'] == 1 審核通過 待取
+					$reserves = getUserReserveAccount($barcode, 'avaliable');
+					echo "<pre>";
+					var_dump($reserves);
+					echo "</pre>";
+					//echo "<blockquote>單槍投影機(2) <button class=\"btn btn-primary\">取用</button></blockquote>";
+
+					echo "<h4>借用中待還</h4>";
+
+					// $reserves[$i]['r_state'] == 2 借用中
+					$reserves = getUserReserveAccount($barcode, 'borrowed');
+					//echo "<blockquote>無</blockquote>";
+	
+					echo "<center><button onClick=\"javascript:window.history.back();\" class=\"btn btn-large\">返回</button></center>";
+					//找尋此學生目前所有審核過待取/借用中待還的紀錄
+				}else{
+					echo "此編號 ".$barcode." 不存在或無任何紀錄";
+				}
 			}
 			if($type == "Property"){
 				$pid = getPropertyIDByAcc($barcode);
@@ -99,6 +114,7 @@
 			}
 			if($type == "Other"){
 				echo "<legend>其他</legend>";
+				echo "您輸入的是正確的編碼嗎？";
 				//例外狀況
 			}
 		?>
