@@ -126,6 +126,7 @@
 					echo "這個物品不存在或是尚未建立紀錄";
 					echo "<center><button onClick=\"javascript:window.history.back();\" class=\"btn btn-large\">返回</button></center>";
 				}
+			}
 		?>
       </div>
     </div>
