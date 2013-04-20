@@ -65,6 +65,8 @@
 
 					// $reserves[$i]['r_state'] == 1 審核通過 待取
 					$reserves = getUserReserveAccount($barcode, 'avaliable');
+					if (count($reserves) <= 1)
+						echo "none";
 					echo "<pre>";
 					var_dump($reserves);
 					echo "</pre>";
