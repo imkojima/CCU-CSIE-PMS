@@ -128,6 +128,10 @@
 					echo "<center><button onClick=\"javascript:window.history.back();\" class=\"btn btn-large\">返回</button></center>";
 					//例外狀況
 				}
+			}else{
+				echo "<legend>查詢失敗</legend>";
+				echo "這個物品不存在或是尚未建立紀錄";
+				echo "<center><button onClick=\"javascript:window.history.back();\" class=\"btn btn-large\">返回</button></center>";
 			}
 		?>
       </div>
