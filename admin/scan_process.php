@@ -18,6 +18,7 @@
   $PATH="../";
 	require_once($PATH."auth.php");
 	require_once($PATH."libs/property.php");
+	require_once($PATH."libs/reserve.php");
 
 	if(getUserPerm($_SESSION['ccupms_acc'])!='admin') header("Location:".$PATH."index.php");
 
