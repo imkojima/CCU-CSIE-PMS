@@ -95,7 +95,9 @@
 					echo "<center><button onClick=\"javascript:window.history.back();\" class=\"btn btn-large\">返回</button></center>";
 					//找尋此學生目前所有審核過待取/借用中待還的紀錄
 				}else{
-					echo "此編號 ".$barcode." 不存在或無任何紀錄";
+					echo "<legend>查詢失敗</legend>";
+					echo "<h4>此編號 ".$barcode." 不存在或無任何紀錄</h4>";
+					echo "<center><button onClick=\"javascript:window.history.back();\" class=\"btn btn-large\">返回</button></center>";
 				}
 			}
 			if($type == "Property"){
