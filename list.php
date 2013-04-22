@@ -99,11 +99,11 @@ if ( count( $properties ) <= 1 )
 else
   for ( $i=0; $i < count( $properties )-1; $i++ ) {
   echo "
-            <tr"; if ( $properties[$i]['p_state'] == 2 ) echo " class=\"warning\""; elseif ( $properties[$i]['p_state'] == 3 ) echo " class=\"error\""; echo ">
-              <td data-title=\"編號\">".$properties[$i]['p_id']."</td>
-              <td data-title=\"財產名稱\">".$properties[$i]['p_name']."</td>
-              <td data-title=\"描述\">".$properties[$i]['model']."</td>
-          ";
+                <tr"; if ( $properties[$i]['p_state'] == 2 ) echo " class=\"warning\""; elseif ( $properties[$i]['p_state'] == 3 ) echo " class=\"error\""; echo ">
+                  <td data-title=\"編號\">".$properties[$i]['p_id']."</td>
+                  <td data-title=\"財產名稱\">".$properties[$i]['p_name']."</td>
+                  <td data-title=\"描述\">".$properties[$i]['model']."</td>
+              ";
   echo "<td data-title=\"狀態\">";
   switch ( $properties[$i]['p_state'] ) {
   case 0:
@@ -123,7 +123,7 @@ else
     break;
   }
   echo "<td data-title=\"執行\"><div class=\"btn-group\"><a "; if ( $properties[$i]['p_state'] <=1 ) echo "data-toggle=\"modal\" href=\"modal_reserve.php?p_id=".$properties[$i]['p_id']."\" data-target=\"#modal\""; echo "role=\"button\" class=\"btn btn-primary\""; if ( $properties[$i]['p_state']>1 ) echo "disabled"; echo ">預約</a><a data-toggle=\"modal\" href=\"modal_property_detail.php?id=".$properties[$i]['p_id']."\" data-target=\"#infor\" role=\"button\" class=\"btn\">詳細資訊</a></div></td>
-          </tr>";
+              </tr>";
 }
 ?>
         </tbody>
@@ -186,44 +186,58 @@ else
   <!--Record List Modal End-->
 
   <?php
-if ( $_POST['action'] == "done" ) {
-  $results = makeReserve( $_POST['p_id'], 'id', $_SESSION['ccupms_acc'], date( "Y-m-d H:i:s" ), htmlspecialchars( addslashes( $_POST['expired_days'] ) ), htmlspecialchars( addslashes( $_POST['reason'] ) ) );
+    if ( $_POST['action'] == "done" ) {
+      $p_id = htmlspecialchars( addslashes( $_POST['p_id'] ) );
+      $p_name = htmlspecialchars( addslashes( $_POST['p_name'] ) );
+      $expired_days = htmlspecialchars( addslashes( $_POST['expired_days'] ) );
+      $reason = htmlspecialchars( addslashes( $_POST['reason'] ) );
 
-  echo "
-      <div class=\"modal hide\" id=\"reserve_done\" role=\"dialog\">
-        <div class=\"modal-header\">
-          <button class=\"close\" data-dismiss=\"modal\">×</button>";
+      if( $expired_days == '' || $expired_days <=0 || $expired_days > 15  ) // 不滿足
+        $results = "INCOMPLETE";
+      else
+        $results = makeReserve( $p_id, 'id', $_SESSION['ccupms_acc'], date( "Y-m-d H:i:s" ), $expired_days ,  $reason );
 
-  if ( $results == "EXIST" ) {
-    echo "<h3>預約失敗！</h3>";
-    makeLog( $_SESSION['ccupms_acc'], "重複預約 - [".$_SESSION['ccupms_acc']."]" );
-  }
-  else {
-    echo "<h3>預約成功！</h3>";
-    makeLog( $_SESSION['ccupms_acc'], "預約成功 - [".$results."]" );
-  }
+      echo "
+          <div class=\"modal hide\" id=\"reserve_done\" role=\"dialog\">
+            <div class=\"modal-header\">
+              <button class=\"close\" data-dismiss=\"modal\">×</button>";
 
-  echo "
-        </div>
-        <div class=\"modal-body\">";
+      if ( $results == "EXIST" ) {
+        echo "<h3>預約失敗！</h3>";
+        makeLog( $_SESSION['ccupms_acc'], "重複預約 - [".$_SESSION['ccupms_acc']."]" );
+      }
+      else if( $results == "INCOMPLETE" ) {
+        echo "<h3>預約失敗</h3>";
+      }
+      else{
+        echo "<h3>預約成功！</h3>";
+        makeLog( $_SESSION['ccupms_acc'], "預約成功 - [".$results."]" );
+      }
 
-  if ( $results == "EXIST" ) {
-    echo "<blockquote>您已經預約過了！</blockquote>";
-  }
-  else {
-    echo "<h4>借用物品</h4><blockquote>".$_POST['p_name']."</blockquote>";
-    echo "<h4>天數</h4><blockquote>".htmlspecialchars( addslashes( $_POST['expired_days'] ) )."</blockquote>";
-    echo "<h4>送出時間</h4><blockquote>".date( "Y-m-d H:i:s" )."</blockquote>";
-    echo "<h4>理由</h4><blockquote>".htmlspecialchars( addslashes( $_POST['reason'] ) )."</blockquote>";
-  }
+      echo "
+            </div>
+            <div class=\"modal-body\">";
 
-  echo "
-      </div>
-      <div class=\"modal-footer\">
-        <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
-      </div>
-      </div>";
-}
+      if ( $results == "EXIST" ) {
+        echo "<blockquote>您已經預約過了！</blockquote>";
+      }
+      else if( $results == "INCOMPLETE") {
+        echo "<blockquote>請您填寫正確的資料</blockquote>";
+      }
+      else{
+        echo "<h4>借用物品</h4><blockquote>".$p_name."</blockquote>";
+        echo "<h4>天數</h4><blockquote>".$expired_days."</blockquote>";
+        echo "<h4>送出時間</h4><blockquote>".date( "Y-m-d H:i:s" )."</blockquote>";
+        echo "<h4>理由</h4><blockquote>".$reason."</blockquote>";
+      }
+
+      echo "
+          </div>
+          <div class=\"modal-footer\">
+            <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
+          </div>
+          </div>";
+    }
 ?>
 
   <script type="text/javascript" src="js/jquery.js"></script>
