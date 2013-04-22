@@ -36,7 +36,13 @@ function makeLog($uacc, $reason){
 
 	$time = date("Y-m-d H:i:s");    
     $usr = new pms_db();
-    $sql = "INSERT INTO `Log`(`logid`, `u_acc`, `reason`, `address`, `time`) VALUES (NULL, '".$uacc."', '".$reason."', '".$_SERVER["REMOTE_ADDR"]."', '".$time."')";
+
+	if(isset($_SERVER["REMOTE_ADDR"]))
+		$ip = $_SERVER["REMOTE_ADDR"];
+	else
+		$ip = "無法取得";
+
+	$sql = "INSERT INTO `Log`(`logid`, `u_acc`, `reason`, `address`, `time`) VALUES (NULL, '".$uacc."', '".$reason."', '".$ip."', '".$time."')";
     $result = $usr->my_query($sql,2);
 	//echo "UserAcc:".$uacc." / ".$reason." / ".$time."<br/>";
 }
