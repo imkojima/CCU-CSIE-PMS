@@ -74,7 +74,7 @@
                     </div>
                     <div class="answer">  
                       <hr />      
-                      <p>本系統為中正資工系務系統的子系統之一，使用校園系統單一入口機制作為帳號簽入的認證，<b>請直接於 <span class="badge badge-info"><a href="http://140.123.104.217">系務系統</a></span> 上使用學籍系統的帳號、密碼登入使用。</b><br/>校園系統單一入口： <a href="http://portal.ccu.edu.tw/">http://portal.ccu.edu.tw/</a></p></div>
+                      <p>本系統為中正資工系務系統的子系統之一，使用校園系統單一入口機制作為帳號簽入的認證，<b>請直接於 <a href="http://140.123.104.217">系務系統</a> 上使用學籍系統的帳號、密碼登入使用。</b><br/>校園系統單一入口： <a href="http://portal.ccu.edu.tw/">http://portal.ccu.edu.tw/</a></p></div>
                     </div>
                   <div class="thumbnail" style="margin-bottom:10px;">
                     <div class="question">
@@ -226,7 +226,7 @@
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript">
       $(document).ready(function(){
-        $('.answer').hide();
+        //$('.answer').hide();
         $('.question').toggle(
           function () {
             $(this).next('.answer').fadeIn();
