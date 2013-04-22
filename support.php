@@ -98,7 +98,7 @@
                     </div>          
                     <div class="answer"> 
                       <hr />
-					  <p>請於 <blockquote><i style="vertical-align:baseline;" class="icon-book"></i> 借用</blockquote> 瀏覽財產資料庫，選擇您所需的項目。<br/>
+					  <p>請於 <span class="label label-info"><i style="vertical-align:baseline;" class="icon-book"></i> 借用</span> 瀏覽財產資料庫，選擇您所需的項目。<br/>
 						 需要填寫預約有效的範圍及借用原因備查，待承辦人員審核通過即發信通知您前來取用。</p>
                     </div>
                   </div>
