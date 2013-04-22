@@ -98,8 +98,7 @@
                     </div>          
                     <div class="answer"> 
                       <hr />
-					  <p>請於 <span class="label label-info"><i style="vertical-align:baseline;" class="icon-book"></i> 借用</span> 瀏覽財產資料庫，選擇您所需的項目。<br/>
-						 需要填寫預約有效的範圍及借用原因備查，待承辦人員審核通過即發信通知您前來取用。</p>
+					  <p>請於 <span class="label label-info"><i style="vertical-align:baseline;" class="icon-book"></i>借用</span> 瀏覽財產資料庫，選擇您所需的項目。<br/>需要填寫<u>預約有效的日期範圍</u>及<u>借用原因</u>備查，待承辦人員審核通過即發信通知您前來取用。</p>
                     </div>
                   </div>
                   <div class="thumbnail" style="margin-bottom:10px;">
@@ -108,7 +107,8 @@
                     </div>          
                     <div class="answer"> 
                       <hr />
-                      <p>可能沒有填寫基本資料</p>
+					  <p>您可能沒有尚未填寫基本資料，故系統自動暫停您的借用申請，請編輯填寫完成後再次嘗試。</p>
+					  <p>注：我們需要這些基本資料在必要的時候聯繫您，故有其重要性。</p>
                     </div>
                   </div>
                    <div class="thumbnail" style="margin-bottom:10px;">
@@ -117,7 +117,7 @@
                     </div>          
                     <div class="answer"> 
                       <hr />
-                      <p>你可能要等 iPhone5S 出來後才排得到了</p>
+                      <p>基於彈性及實務需求，我們並不採用 <span class="badge badge-info">FCFS (First Come, First Served)</span> 的方式處理預約借用，任何具備資格的人都可以提出物品預約的申請，承辦人員在檢視借用原因及他人需求後會決定是否將物品借出。</p>
                     </div>
                   </div> 
                    <div class="thumbnail" style="margin-bottom:10px;">
