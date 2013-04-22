@@ -194,7 +194,9 @@
     </div>
   </div>​
   <?php
-      if($_POST['action']=="done" && $_POST['submit']=="cancel") {
+  if($_POST['action']=="done" && $_POST['submit']=="cancel") {
+      cancelReserve( $_POST["r_id"] );
+      makeLog($_SESSION['ccupms_acc'], "取消預約 - [".$_POST['r_id']."]");
       echo "
       <div class=\"modal hide\" id=\"done\" role=\"dialog\">
         <div class=\"modal-header\">
@@ -209,9 +211,7 @@
         <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
       </div>
       </div>";
-      cancelReserve( $_POST["r_id"] );
-      makeLog($_SESSION['ccupms_acc'], "取消預約 - [".$_POST['r_id']."]");
-    }
+  }
   ?>
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>

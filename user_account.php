@@ -269,49 +269,49 @@
         <div class="modal-body">
         Loading...
       </div>
-    </div>​
+    </div>
 
     <?php
       if($_POST['action'] == "done") {
         if($_POST['submit'] == "cancel") {
-          echo "
-          <div class=\"modal hide\" id=\"done\" role=\"dialog\">
-            <div class=\"modal-header\">
-              <button class=\"close\" data-dismiss=\"modal\">×</button>
-              <h3>取消預約成功！</h3>
-            </div>
-            <div class=\"modal-body\">";
-          echo "<h4>已取消預約編號</h4><blockquote>".$_POST["r_id"]."</blockquote>";
-          echo "
-          </div>
-          <div class=\"modal-footer\">
-            <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
-          </div>
-          </div>";
-          cancelReserve( $_POST["r_id"] );
-		      makeLog($_SESSION['ccupms_acc'], "取消預約 - [".$_POST['r_id']."]");
+			cancelReserve( $_POST["r_id"] );
+		    makeLog($_SESSION['ccupms_acc'], "取消預約 - [".$_POST['r_id']."]");
+			echo "
+		      <div class=\"modal hide\" id=\"done\" role=\"dialog\">
+	            <div class=\"modal-header\">
+	              <button class=\"close\" data-dismiss=\"modal\">×</button>
+	              <h3>取消預約成功！</h3>
+	            </div>
+	            <div class=\"modal-body\">";
+	          echo "<h4>已取消預約編號</h4><blockquote>".$_POST["r_id"]."</blockquote>";
+	          echo "
+		        </div>
+		        <div class=\"modal-footer\">
+				  <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
+				</div>
+	          </div>";
         }
         else {
-          echo "
-          <div class=\"modal hide\" id=\"done\" role=\"dialog\">
-            <div class=\"modal-header\">
-              <button class=\"close\" data-dismiss=\"modal\">×</button>
-              <h3>編輯帳號成功！</h3>
-            </div>
-            <div class=\"modal-body\">";
-          echo "<h4>帳號</h4><blockquote>".$_SESSION['ccupms_acc']."</blockquote>";
-          echo "<h4>姓名</h4><blockquote>".htmlspecialchars(addslashes($_POST['user_name']))."</blockquote>";
-          echo "<h4>電話</h4><blockquote>".htmlspecialchars(addslashes($_POST['phone']))."</blockquote>";
-          echo "<h4>電子信箱</h4><blockquote>".htmlspecialchars(addslashes($_POST['email']))."</blockquote>";
-          echo "
-          </div>
-          <div class=\"modal-footer\">
-            <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
-          </div>
-          </div>";
+			editUser($_SESSION['ccupms_acc'],htmlspecialchars(addslashes($_POST['user_name'])),getUserGrade($_SESSION['ccupms_acc']),htmlspecialchars(addslashes($_POST['phone'])),htmlspecialchars(addslashes($_POST['email'])),getUserPermID($_SESSION['ccupms_acc']));
+			makeLog($_SESSION['ccupms_acc'],'個人資料編輯');
 
-          editUser($_SESSION['ccupms_acc'],htmlspecialchars(addslashes($_POST['user_name'])),getUserGrade($_SESSION['ccupms_acc']),htmlspecialchars(addslashes($_POST['phone'])),htmlspecialchars(addslashes($_POST['email'])),getUserPermID($_SESSION['ccupms_acc']));
-		      makeLog($_SESSION['ccupms_acc'],'個人資料編輯');
+			echo "
+	          <div class=\"modal hide\" id=\"done\" role=\"dialog\">
+	            <div class=\"modal-header\">
+	              <button class=\"close\" data-dismiss=\"modal\">×</button>
+	              <h3>編輯帳號成功！</h3>
+	            </div>
+	            <div class=\"modal-body\">";
+	          echo "<h4>帳號</h4><blockquote>".$_SESSION['ccupms_acc']."</blockquote>";
+	          echo "<h4>姓名</h4><blockquote>".htmlspecialchars(addslashes($_POST['user_name']))."</blockquote>";
+	          echo "<h4>電話</h4><blockquote>".htmlspecialchars(addslashes($_POST['phone']))."</blockquote>";
+	          echo "<h4>電子信箱</h4><blockquote>".htmlspecialchars(addslashes($_POST['email']))."</blockquote>";
+	          echo "
+	          </div>
+	          <div class=\"modal-footer\">
+	            <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
+	          </div>
+	          </div>";
         }
       }
     ?>
