@@ -84,7 +84,8 @@ function makeReserve($keyword,$type,$u_id,$date,$days,$reason){
 		return "EXIST";
 	}
 	else {
-			$str="INSERT INTO Reserve ( u_id, p_id, r_date, r_state, r_days, r_reason) VALUES ('".$u_id."', '".$a[0]['p_id']."', '".$date."', '".$a[0]['p_state']."','".$days."' , '".$reason."');";
+//			$str="INSERT INTO Reserve ( u_id, p_id, r_date, r_state, r_days, r_reason) VALUES ('".$u_id."', '".$a[0]['p_id']."', '".$date."', '".$a[0]['p_state']."','".$days."' , '".$reason."');";
+            $str="INSERT INTO Reserve ( u_id, p_id, r_date, r_state, r_days, r_reason) VALUES ('".$u_id."', '".$a[0]['p_id']."', '".$date."', '0','".$days."' , '".$reason."');";
 			$test->my_query($str, 1);
 			$result = $test->my_query("SELECT LAST_INSERT_ID();", 2);
 			return $result[''][0];	// last insert id
