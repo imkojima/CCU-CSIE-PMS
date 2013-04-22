@@ -74,7 +74,8 @@
                     </div>
                     <div class="answer">  
                       <hr />      
-                      <p>本系統為中正資工系務系統的子系統之一，使用校園系統單一入口機制作為帳號簽入的認證，<b>請直接於 <a href="http://140.123.104.217">系務系統</a> 上使用學籍系統的帳號、密碼登入使用。</b><br/>校園系統單一入口： <a href="http://portal.ccu.edu.tw/">http://portal.ccu.edu.tw/</a></p></div>
+					  <p>本系統為中正資工系務系統的子系統之一，使用校園系統單一入口機制作為帳號簽入的認證，<br/><b>請直接於 <a href="http://140.123.104.217">系務系統</a> 上使用學籍系統的帳號、密碼登入使用。</b></p>
+					  <p>校園系統單一入口： <a href="http://portal.ccu.edu.tw/">http://portal.ccu.edu.tw/</a></p></div>
                     </div>
                   <div class="thumbnail" style="margin-bottom:10px;">
                     <div class="question">
@@ -142,7 +143,7 @@
                     </div>          
                     <div class="answer"> 
                       <hr />
-                      <p>你可能要等 iPhone5S 出來後才排得到了</p>
+                      <p>因為在物品的借出/歸還時，我們可能需要使用這些資料來聯繫您。</p>
                     </div>
                   </div> 
                   <div class="thumbnail" style="margin-bottom:10px;">
@@ -151,16 +152,7 @@
                     </div>          
                     <div class="answer"> 
                       <hr />
-                      <p>首頁 -> 帳號，或是右上角帳號選單裡面選擇 個人資料，在頁面左下角有編輯資料按鈕。</p>
-                    </div>
-                  </div>
-                  <div class="thumbnail" style="margin-bottom:10px;">
-                    <div class="question">
-                      <h4><span class="badge badge-info"><i style="vertical-align:baseline;" class="icon-question-sign"></i></span> 我想看 iPhone5 官方新聞稿</h4>
-                    </div>          
-                    <div class="answer"> 
-                      <hr />
-                      <p>Apple® 今天宣佈 iPhone® 5 將於 12 月 7 日星期五在韓國上市。12 月，iPhone 5 還將在其他 50 多個國家和地區上市，包括巴西、俄羅斯及台灣。iPhone 5 是歷來最纖薄、最輕巧的 iPhone，經過完全重新設計，配備纖麗奪目的全新 4 吋 Retina 顯示器，Apple 設計的全新 A6 晶片，效能強大卻不耗電，以及支援最新的無線技術*，一應俱全卻仍提供更佳的電池續航力**。</p>
+                      <p>您可於 <span class="label label-info"><i style="vertical-align:baseline;" class="icon-user"></i>帳號</span> 中編輯資料，或直接從右上角選單進入個人資料再行修改。</p>
                     </div>
                   </div>
                   <div class="thumbnail" style="margin-bottom:10px;">
@@ -169,19 +161,11 @@
                     </div>          
                     <div class="answer"> 
                       <hr />
-                      <p>基本上我們建議您立刻登出，避免影響他人權益，但如果是 499410031 ，請儘管亂用。</p>
+                      <p>若非他人於公共電腦使用後忘記登出，請發揮您的愛心將他登出。 即使是惡意使用也無法透過本系統編修學籍系統上的密碼甚至資料，請各位放心。</p>
                     </div>
                   </div>
-                  <div class="thumbnail" style="margin-bottom:10px;">
-                    <div class="question">
-                      <h4><span class="badge badge-info"><i style="vertical-align:baseline;" class="icon-question-sign"></i></span> 聽說獅子成績很好，找不到對手</h4>
-                    </div>          
-                    <div class="answer"> 
-                      <hr />
-                      <p>暫時無解，他只要有啤酒配棒球就能考滿分</p>
-                    </div>
-                  </div>  
-                </div>
+
+				</div>
               </div>
             </div>
  
@@ -194,7 +178,6 @@
                     </div>          
                     <div class="answer"> 
                       <hr />
-                      <p>很難解釋，但可以給你看開發過程中的照片(如下圖)。</p>
 					  <img src="img/makers.jpg"/> 
                     </div>
                   </div> 
@@ -206,6 +189,7 @@
                       <hr />
 					  <img src="img/ccu.gif"/> 
 					  <p>國立中正大學資訊工程學系 2012</p>
+					  <p>有任何問題請聯繫本系所辦公室 mail: office@cs.ccu.edu.tw / Ext: 23101</p>
                     </div>
                   </div> 
                 </div>
