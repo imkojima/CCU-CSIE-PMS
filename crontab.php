@@ -19,7 +19,8 @@ for($i=0;$i<count($reserves)-1;$i++){
 			$numDecrease++;
 		}else{
 			//因超過預約期限，自動取消預約
-			cancelReserve( $reserves[$i]['r_id'] );	
+			cancelReserve( $reserves[$i]['r_id'] );
+			makeLog($reserves[$i]['u_id'], "取消預約 (自動) - [".$reserves[$i]['r_id']."]");	
 			echo "取消<br/>";
 			$numCancel++;
 		}
