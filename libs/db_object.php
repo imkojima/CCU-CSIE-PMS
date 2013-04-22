@@ -50,7 +50,6 @@
 			   // else{
 					if ($type==2)
 					{
-			//			$i = 0;
 						while ($ret[$i]=mysql_fetch_array($sql))
 						$i++;						
 						return $ret;
