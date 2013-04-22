@@ -40,7 +40,7 @@ function makeLog($uacc, $reason){
 	if(isset($_SERVER["REMOTE_ADDR"]))
 		$ip = $_SERVER["REMOTE_ADDR"];
 	else
-		$ip = "無法取得";
+		$ip = "--";
 
 	$sql = "INSERT INTO `Log`(`logid`, `u_acc`, `reason`, `address`, `time`) VALUES (NULL, '".$uacc."', '".$reason."', '".$ip."', '".$time."')";
     $result = $usr->my_query($sql,2);
