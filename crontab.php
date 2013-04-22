@@ -3,6 +3,11 @@
 require_once('libs/reserve.php');
 require_once('libs/logs.php');
 
+if(isset($_SERVER['REQUEST_URI'])){
+	makeLog("System", "試圖存取排程程式");
+	exit();
+}
+
 /* Crontabl Daily Script */
 $reserves = getReserveList();
 
