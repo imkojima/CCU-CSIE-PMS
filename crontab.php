@@ -31,5 +31,5 @@ for($i=0;$i<count($reserves)-1;$i++){
 		}
 	}
 }
-makeLog("Crontab", "完成今日排程操作");
+makeLog("Crontab", "完成今日排程操作 - 遞減:".$numDecrease.", 取消:".$numCancel);
 ?>
