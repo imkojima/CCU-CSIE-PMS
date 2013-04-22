@@ -74,7 +74,7 @@
                     </div>
                     <div class="answer">  
                       <hr />      
-                      <p>本系統使用校園系統單一入口作為帳號簽入的認證，<b>請直接使用學籍系統的帳號、密碼登入使用。</b><br/>校園系統單一入口： <a href="http://portal.ccu.edu.tw/">http://portal.ccu.edu.tw/</a></p></div>
+                      <p>本系統為中正資工系務系統的子系統之一，使用校園系統單一入口機制作為帳號簽入的認證，<b>請直接於 <span class="badge badge-info"><a href="http://140.123.104.217">系務系統</a></span> 上使用學籍系統的帳號、密碼登入使用。</b><br/>校園系統單一入口： <a href="http://portal.ccu.edu.tw/">http://portal.ccu.edu.tw/</a></p></div>
                     </div>
                   <div class="thumbnail" style="margin-bottom:10px;">
                     <div class="question">
@@ -122,11 +122,11 @@
                   </div> 
                    <div class="thumbnail" style="margin-bottom:10px;">
                     <div class="question">
-                      <h4><span class="badge badge-info"><i style="vertical-align:baseline;" class="icon-question-sign"></i></span> 預約天數是什麼？</h4>
+                      <h4><span class="badge badge-info"><i style="vertical-align:baseline;" class="icon-question-sign"></i></span> 預約時限/天數是什麼？</h4>
                     </div>          
                     <div class="answer"> 
                       <hr />
-                      <p>你可能要等 iPhone5S 出來後才排得到了</p>
+                      <p>為避免使用者等待過久的申請及實務上承辦人員審核的需要，故要求在提出借用的預約申請時要一併填寫該申請的 <span class="badge badge-important">預約時限</span> ，在此天數內為有效的預約；超過此時限仍未被審核的預約將被取消，若有需要請再次提出申請。</p>
                     </div>
                   </div> 
                 </div>
