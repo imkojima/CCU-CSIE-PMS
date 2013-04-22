@@ -25,14 +25,23 @@
     <blockquote>
       <p><?php echo $reserve['']['r_id']; ?></p>
     </blockquote>
-  <h4>財產資料庫編號</h4>
-  <blockquote>
-    <p><?php echo $reserve['']['p_id']; ?></p>
-  </blockquote>
   <h4>財產名稱</h4>
   <blockquote>
-    <p><?php echo getPropertyName($reserve['']['p_id']); ?></p>
+    <p><?php echo getPropertyName($reserve['']['p_id'])." (".$reserve['']['p_id'].")"; ?></p>
   </blockquote>
+  <h4>預約時間</h4>
+  <blockquote>
+    <p><?php echo $reserve['']['r_date']; ?></p>
+  </blockquote>
+  <h4>預約有效日期</h4>
+  <blockquote>
+    <p>剩下 <span class="badge badge-important"><?php echo $reserve['']['r_days']; ?></span> 天</p>
+  </blockquote>
+  <h4>借用原因</h4>
+  <blockquote>
+    <p><?php echo $reserve['']['r_reason']; ?></p>
+  </blockquote>
+
   <h4>狀態</h4>
   <blockquote>
     <p>
@@ -65,17 +74,5 @@
 		}
 	?>
 	</p>
-  </blockquote>
-  <h4>預約時間</h4>
-  <blockquote>
-    <p><?php echo $reserve['']['r_date']; ?></p>
-  </blockquote>
-  <h4>預約有效日期</h4>
-  <blockquote>
-    <p>剩下 <span class="badge badge-important"><?php echo $reserve['']['r_days']; ?></span> 天</p>
-  </blockquote>
-  <h4>借用原因</h4>
-  <blockquote>
-    <p><?php echo $reserve['']['r_reason']; ?></p>
   </blockquote>
 </div>

@@ -22,13 +22,9 @@
 ?>
 
 <div class="">
-  <h4>財產資料庫編號</h4>
-  <blockquote>
-    <p><?php echo getPropertyID($id); ?></p>
-  </blockquote>
   <h4>財產名稱</h4>
   <blockquote>
-    <p><?php echo getPropertyName($id); ?></p>
+    <p><?php echo getPropertyName($id)." (".getPropertyID($id).")"; ?></p>
   </blockquote>
   <h4>狀態</h4>
   <blockquote>
