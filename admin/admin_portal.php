@@ -52,47 +52,57 @@
               <legend>管理者選單 Admin Menu</legend>
               <div class="row-fluid" style="text-align:center;padding-top:30px">
 
-                <div class="span4">
+				<div class="span4">
+				  <a href="admin_announcement.php" style="text-decoration: none;">
                   <div style="font-size: 70px;">
-                    <a href="admin_announcement.php" style="text-decoration: none;"><i class="icon-bullhorn" style="height:auto; width:auto; line-height:auto;"></i>
+                    <i class="icon-bullhorn" style="height:auto; width:auto; line-height:auto;"></i>
                   </div>
-                  <p style="line-height:30px;">公告管理</p></a>
+				  <p style="line-height:30px;">公告管理</p>
+				  </a>
                 </div>
 
-                <div class="span4">
+				<div class="span4">
+				  <a href="admin_list.php" style="text-decoration: none;">
                   <div style="font-size: 70px;">
-                    <a href="admin_list.php" style="text-decoration: none;"><i class="icon-briefcase" style="height:auto; width:auto; line-height:auto;"></i></a>
+                    <i class="icon-briefcase" style="height:auto; width:auto; line-height:auto;"></i>
                   </div>
-                  <p style="line-height:30px;"><a href="admin_list.php">物品管理</a></p>
+				  <p style="line-height:30px;">物品管理</p>
+				  </a>
                 </div>
-                <div class="span4">
+				<div class="span4">
+				  <a href="admin_audit.php" style="text-decoration: none;">
                   <div style="font-size: 70px;">
-                    <a href="admin_audit.php" style="text-decoration: none;"><i class="icon-legal" style="height:auto; width:auto; line-height:auto;"></i></a>
+                    <i class="icon-legal" style="height:auto; width:auto; line-height:auto;"></i>
                   </div>
-                  <p style="line-height:30px;"><a href="admin_audit.php">借用/歸還</a></p>
+				  <p style="line-height:30px;">借用/歸還</p>
+				  </a>
                 </div>
               </div>
               <hr/>
               <div class="row-fluid" style="text-align:center;padding-top:30px">
-                <div class="span4">
+				<div class="span4">
+				  <a href="admin_account_list.php" style="text-decoration: none;">
                   <div style="font-size: 70px;">
-                    <a href="admin_account_list.php" style="text-decoration: none;">
                     <i class="icon-group" style="height:auto; width:auto; line-height:auto;"></i>
                   </div>
-                  <p style="line-height:30px;">帳號管理</p></a>
+				  <p style="line-height:30px;">帳號管理</p>
+				  </a>
                 </div>
-                <div class="span4">
+				<div class="span4">
+				  <a href="#" onClick="javascript:PopupCenter('scan.html', 'barcode', 400, 320);">
                   <div style="font-size: 70px;">
-                    <a href="#" onClick="javascript:PopupCenter('scan.html', 'barcode', 400, 320);"<i class="icon-barcode" style="height:auto; width:auto; line-height:auto;"></i></a>
+                    <i class="icon-barcode" style="height:auto; width:auto; line-height:auto;"></i>
                   </div>
-                  <p style="line-height:30px;"><a href="#" onClick="javascript:PopupCenter('scan.html', 'barcode', 400, 320);">條碼掃描</a></p>
+				  <p style="line-height:30px;">條碼掃描</p>
+				  </a>
                 </div>
-                <div class="span4">
+				<div class="span4">
+				  <a href="admin_history.php" style="text-decoration: none;">
                   <div style="font-size: 70px;">
-					<a href="admin_history.php" style="text-decoration: none;">
                     <i class="icon-list" style="height:auto; width:auto; line-height:auto;"></i>
                   </div>
-                  <p style="line-height:30px;">系統紀錄</p></a>
+				  <p style="line-height:30px;">系統紀錄</p>
+				  </a>
                 </div>
               </div>
            </div>

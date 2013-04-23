@@ -54,8 +54,8 @@
                 <li><a href="<?php echo $PATH;?>admin/admin_list.php"><i class="icon-book"></i> 物品管理</a></li>
                 <li><a href="<?php echo $PATH;?>admin/admin_audit.php"><i class="icon-legal"></i> 借用/歸還</a></li>
                 <li><a href="<?php echo $PATH;?>admin/admin_account_list.php"><i class="icon-group"></i> 帳號管理</a></li>
-                <li><a href="#"><i class="icon-barcode"></i> 條碼掃描</a></li>
-                <li><a href="#"><i class="icon-cog"></i> 系統管理</a></li>
+				<li><a href="#" onClick="javascript:PopupCenter('<?php echo $PATH;?>admin/scan.html', 'barcode', 400, 320);"><i class="icon-barcode"></i> 條碼掃描</a></li>
+				<li><a href="<?php echo $PATH;?>admin/admin_history.php"><i class="icon-list"></i> 系統紀錄</a></li>
                 <li class="divider"></li>
                 <li><a href="<?php echo $PATH;?>"><i class="icon-arrow-right"></i> 回到使用者入口</a></li>
               </ul>
