@@ -266,11 +266,10 @@ else
         $("#modal .modal-body").load(target, function() {
 			$("#modal").modal("show");
 			$("#reserveForm").validate({
-				rules:{
+				rules: {
 					daylimits: {
 						required: true,
-						digits: true,
-						range: [1,15]
+						range: [1, 15]
 					}
 				},
 				highlight: function(element) {
