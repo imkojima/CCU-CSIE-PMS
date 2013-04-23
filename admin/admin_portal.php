@@ -89,7 +89,7 @@
 				  </a>
                 </div>
 				<div class="span4">
-				  <a href="#" onClick="javascript:PopupCenter('scan.html', 'barcode', 400, 320);">
+				  <a href="#" onClick="javascript:PopupCenter('scan.html', 'barcode', 400, 320);" style="text-decoration: none;">
                   <div style="font-size: 70px;">
                     <i class="icon-barcode" style="height:auto; width:auto; line-height:auto;"></i>
                   </div>
