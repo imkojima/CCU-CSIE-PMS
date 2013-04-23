@@ -269,8 +269,8 @@ else
 				rules:{
 					daylimits: {
 						required: true,
-						min: 1,
-						max: 15
+						digits: true,
+						range: [1,15]
 					}
 				},
 				highlight: function(element) {
