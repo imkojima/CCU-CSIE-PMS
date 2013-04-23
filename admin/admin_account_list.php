@@ -217,7 +217,7 @@
       </div>";
 
       editUser($_POST['u_acc'],$_POST['name'],$_POST['grade'],$_POST['phone'],$_POST['mail'],$_POST['optionsRadios']);
-	    makeLog("System", "編輯帳號 - [".$_POST['u_acc']."]");
+	    makeLog("System", "編輯帳號 - [U:".$_POST['u_acc']."]");
     }
     elseif ($_POST['submit'] == "刪除") {
       echo "
@@ -247,7 +247,7 @@
       </div>";
 
       deleteUser( $_POST['u_acc'] );
-	  makeLog("System", "刪除帳號 - [".$_POST['u_acc']."]");
+	  makeLog("System", "刪除帳號 - [U:".$_POST['u_acc']."]");
     }
     elseif($_POST['submit'] == "新增"){
       echo "
@@ -276,7 +276,7 @@
       </div>
       </div>";
       addUser( $_POST['u_id'], $_POST['u_acc'], $_POST['name'], $_POST['grade'], $_POST['phone'], $_POST['mail'], $_POST['permission'] );
-	  makeLog("System", "新增帳號 - [".$_POST['u_acc']."]");
+	  makeLog("System", "新增帳號 - [U:".$_POST['u_acc']."]");
     }
   ?>
 

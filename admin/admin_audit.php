@@ -297,7 +297,7 @@
           </div>
           </div>";
           rejectReserve( $_POST["r_id"] );
-		  makeLog("System", "駁回預約 - [".$_POST['r_id']."]");
+		  makeLog("System", "駁回預約 - [R:".$_POST['r_id']."]");
       }elseif ($_POST['action'] == "accept") {
         echo "
         <div class=\"modal hide\" id=\"done\" role=\"dialog\">
@@ -315,7 +315,7 @@
         </div>";
 
         acceptReserve( $_POST["r_id"] );
-		makeLog("System", "核准預約 - [".$_POST['r_id']."]");
+		makeLog("System", "核准預約 - [R:".$_POST['r_id']."]");
       }
       elseif ($_POST['action'] == "lent") {
         echo "
@@ -334,7 +334,7 @@
         </div>";
 
         lentReserve( $_POST["r_id"] );
-		makeLog("System", "借出預約 - [".$_POST['r_id']."]");
+		makeLog("System", "借出預約 - [R:".$_POST['r_id']."]");
       }elseif ($_POST['action'] == "return") {
         echo "
         <div class=\"modal hide\" id=\"done\" role=\"dialog\">
@@ -352,7 +352,7 @@
         </div>";
 
         returnReserve( $_POST["r_id"] );
-		makeLog("System", "歸還預約 - [".$_POST['r_id']."]");
+		makeLog("System", "歸還預約 - [R:".$_POST['r_id']."]");
       }
     ?>
 

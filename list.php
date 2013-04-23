@@ -204,14 +204,14 @@ else
 
       if ( $results == "EXIST" ) {
         echo "<h3>預約失敗！</h3>";
-        makeLog( $_SESSION['ccupms_acc'], "重複預約 - [".$_SESSION['ccupms_acc']."]" );
+        makeLog( $_SESSION['ccupms_acc'], "重複預約 - [P:".$p_id."]" );
       }
       else if( $results == "INCOMPLETE" ) {
         echo "<h3>預約失敗</h3>";
       }
       else{
         echo "<h3>預約成功！</h3>";
-        makeLog( $_SESSION['ccupms_acc'], "預約成功 - [".$results."]" );
+        makeLog( $_SESSION['ccupms_acc'], "預約成功 - [R:".$p_id."]" );
       }
 
       echo "

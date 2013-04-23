@@ -196,7 +196,7 @@
   <?php
   if($_POST['action']=="done" && $_POST['submit']=="cancel") {
       cancelReserve( $_POST["r_id"] );
-      makeLog($_SESSION['ccupms_acc'], "取消預約 - [".$_POST['r_id']."]");
+      makeLog($_SESSION['ccupms_acc'], "取消預約 - [R:".$_POST['r_id']."]");
       echo "
       <div class=\"modal hide\" id=\"done\" role=\"dialog\">
         <div class=\"modal-header\">

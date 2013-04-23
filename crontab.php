@@ -25,11 +25,11 @@ for($i=0;$i<count($reserves)-1;$i++){
 		}else{
 			//因超過預約期限，自動取消預約
 			cancelReserve( $reserves[$i]['r_id'] );
-			makeLog($reserves[$i]['u_id'], "取消預約 (自動) - [".$reserves[$i]['r_id']."]");	
+			makeLog($reserves[$i]['u_id'], "取消預約 (自動) - [R:".$reserves[$i]['r_id']."]");	
 			echo "取消<br/>";
 			$numCancel++;
 		}
 	}
 }
-makeLog("Crontab", "完成今日排程操作 - 遞減:".$numDecrease.", 取消:".$numCancel);
+makeLog("Crontab", "完成排程操作 - 遞減:".$numDecrease.", 取消:".$numCancel);
 ?>

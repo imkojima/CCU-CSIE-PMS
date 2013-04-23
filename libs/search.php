@@ -44,6 +44,7 @@ function Search($keyword,$table,$part){
           break;
       }
   }
+/*
   if($table =='Record'){
        switch($part){
          case 'u_acc':
@@ -51,7 +52,7 @@ function Search($keyword,$table,$part){
           break;
        }
   }
-
+ */
   $result=$dbc->my_query($str,2);
 
   $i=0;

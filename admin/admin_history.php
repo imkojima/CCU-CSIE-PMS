@@ -182,7 +182,7 @@
       </div>
       </div>";
       cancelReserve( $_POST["r_id"] );
-      makeLog($_SESSION['ccupms_acc'], "取消預約 - [".$_POST['r_id']."]");
+      makeLog($_SESSION['ccupms_acc'], "取消預約 - [R:".$_POST['r_id']."]");
     }
   ?>
   <script type="text/javascript" src="../js/jquery.js"></script>

@@ -150,7 +150,7 @@
       </div>";
 
       editAnnouncement($_POST['ID'],$_POST['title'],$_POST['pin'],$_POST['date'], $_POST['content']);
-	  makeLog("System", "編輯公告 - [".$_POST['title']."]");
+	  makeLog("System", "編輯公告 - [A:".$_POST['title']."]");
     }
     elseif($_POST['submit'] == "Delete"){
       echo "
@@ -187,7 +187,7 @@
       </div>
       </div>";
       deleteAnnouncement( $_POST['ID'] );
-      makeLog("System", "刪除公告 - [".$_POST['title']."]");
+      makeLog("System", "刪除公告 - [A:".$_POST['title']."]");
     }
     elseif($_POST['submit'] == "Add"){
       echo "
@@ -224,7 +224,7 @@
       </div>
       </div>";
       addAnnouncement( $_POST['title'], $_POST['pin'], date("Y-m-d"), $_POST['content'] );
-      makeLog("System", "新增公告 - [".$_POST['title']."]");
+      makeLog("System", "新增公告 - [A:".$_POST['title']."]");
 	  }
 ?>
 

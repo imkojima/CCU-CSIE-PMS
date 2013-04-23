@@ -34,7 +34,7 @@ if ($_POST['submit']=='新增') {
 	echo "<br />";
 	echo "描述：".$_POST['note'];
 	addProperty( $_POST['p_id'], $_POST['p_acc'], $_POST['p_name'], $_POST['optionsRadios'], $_POST['note'] );
-	makeLog("System", '建立物品資料 - ['.$_POST['p_id'].']');
+	makeLog("System", '建立物品資料 - [P:'.$_POST['p_id'].']');
 }
 if ($_POST['submit']=='更新') {
 	echo "更新 --->";
@@ -50,7 +50,7 @@ if ($_POST['submit']=='更新') {
 	echo "描述：".$_POST['note'];
 
 	updateProperty( $_POST['p_id'], $_POST['p_acc'], $_POST['p_name'], $_POST['optionsRadios'], $_POST['note'] );
-	makeLog("System", '更新物品資料 - ['.$_POST['p_id'].']');
+	makeLog("System", '更新物品資料 - [P:'.$_POST['p_id'].']');
 }
 if ($_POST['submit']=='刪除') {
 	echo "刪除";
@@ -65,7 +65,7 @@ if ($_POST['submit']=='刪除') {
 	echo "<br />";
 	echo "描述：".$_POST['note'];
 	deleteProperty( $_POST['p_id'] );
-	makeLog("System", '刪除物品資料 - ['.$_POST['p_id'].']');
+	makeLog("System", '刪除物品資料 - [P:'.$_POST['p_id'].']');
 }
 
 header("Location:./admin_list.php");
