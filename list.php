@@ -269,6 +269,7 @@ else
 				rules: {
 					daylimits: {
 						required: true,
+						digits: true,
 						range: [1, 15]
 					}
 				},
