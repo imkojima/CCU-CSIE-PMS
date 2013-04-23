@@ -246,6 +246,7 @@ else
   <script type="text/javascript" src="js/jquery.tablesorter.pager.js"></script>
   <script type="text/javascript" src="js/jquery.metadata.js"></script>
   <script type="text/javascript" src="js/jquery.tablecloth.js"></script>
+  <script type="text/javascript" src="js/jquery.validate.js"></script>
   <script type="text/javascript">
     $(window).load(function() {
         $('#reserve_done').modal('show');
@@ -263,7 +264,8 @@ else
         var target = $(this).attr("href");
         // load the url and show modal on success
         $("#modal .modal-body").load(target, function() {
-            $("#modal").modal("show");
+			$("#modal").modal("show");
+			$("form").validate();
         });
     });
     $("#reserve_done").on('hidden', function() {
