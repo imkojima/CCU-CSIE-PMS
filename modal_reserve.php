@@ -4,7 +4,7 @@
   $p_id = htmlspecialchars(addslashes($_GET['p_id']));
 ?>
 
-<form class="form-horizontal" method="post" action="list.php">
+<form id="reserveForm" class="form-horizontal" method="post" action="list.php">
   <fieldset>
   <input class="hidden" name="p_id" value=<?php echo "\"".$p_id."\""; ?>>
   <input class="hidden" name="u_id" value=<?php echo "\"".$_SESSION['ccupms_acc']."\""; ?>>

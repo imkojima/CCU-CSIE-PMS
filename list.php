@@ -265,7 +265,7 @@ else
         // load the url and show modal on success
         $("#modal .modal-body").load(target, function() {
 			$("#modal").modal("show");
-			$("form").validate();
+			$("#reserveForm").validate();
         });
     });
     $("#reserve_done").on('hidden', function() {
