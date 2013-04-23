@@ -266,11 +266,6 @@ else
         $("#modal .modal-body").load(target, function() {
 			$("#modal").modal("show");
 			$("#reserveForm").validate({
-				rules: {
-					daylimits: {
-						range: [1,15]
-					}
-				},
 				highlight: function(element) {
 					$(element).closest('.control-group').removeClass('success').addClass('error');
 				},
