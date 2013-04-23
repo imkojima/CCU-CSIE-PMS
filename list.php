@@ -269,7 +269,7 @@ else
 				highlight: function(element) {
 					$(element).closest('.control-group').removeClass('success').addClass('error');
 				},
-				success: function(element) {
+				unhighlight: function(element) {
 					$(element).closest('.control-group').removeClass('error').addClass('success');
 				},
 				errorPlacement: function (error,element){}		
