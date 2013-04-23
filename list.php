@@ -265,7 +265,11 @@ else
         // load the url and show modal on success
         $("#modal .modal-body").load(target, function() {
 			$("#modal").modal("show");
-			$("#reserveForm").validate();
+			$("#reserveForm").validate({
+				highlight: function(element) {
+					$(element).closest('.control-group').removeClass('success').addClass('error');
+				}			
+			});
         });
     });
     $("#reserve_done").on('hidden', function() {
