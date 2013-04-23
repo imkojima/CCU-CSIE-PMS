@@ -61,7 +61,7 @@
 	</thead>
 	<tbody>
 <?php
-	$logs = getLogsBySearch('reason','['.$_GET['id'].']');
+	$logs = getLogsBySearch('reason','[P:'.$_GET['id'].']');
 
 	if (count($logs) <= 1) {
 ?>

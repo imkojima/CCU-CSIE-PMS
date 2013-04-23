@@ -296,7 +296,7 @@
             <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
           </div>
           </div>";
-          rejectReserve( $_POST["r_id"] );
+		  rejectReserve( $_POST["r_id"] );
 		  makeLog("System", "駁回預約 - [R:".$_POST['r_id']."]");
       }elseif ($_POST['action'] == "accept") {
         echo "
@@ -313,7 +313,6 @@
           <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
         </div>
         </div>";
-
         acceptReserve( $_POST["r_id"] );
 		makeLog("System", "核准預約 - [R:".$_POST['r_id']."]");
       }
@@ -332,9 +331,9 @@
           <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
         </div>
         </div>";
-
-        lentReserve( $_POST["r_id"] );
-		makeLog("System", "借出預約 - [R:".$_POST['r_id']."]");
+		lentReserve( $_POST["r_id"] );
+		$property = getReserveByRID( $_POST["r_id"] );
+		makeLog("System", "借出預約 - [R:".$_POST['r_id']."][P:".$property['']['p_id']."]");
       }elseif ($_POST['action'] == "return") {
         echo "
         <div class=\"modal hide\" id=\"done\" role=\"dialog\">
@@ -350,9 +349,9 @@
           <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
         </div>
         </div>";
-
-        returnReserve( $_POST["r_id"] );
-		makeLog("System", "歸還預約 - [R:".$_POST['r_id']."]");
+		returnReserve( $_POST["r_id"] );
+		$property = getReserveByRID( $_POST["r_id"] );
+		makeLog("System", "歸還預約 - [R:".$_POST['r_id']."][P:".$property['']['p_id']."]");
       }
     ?>
 
