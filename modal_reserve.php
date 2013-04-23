@@ -23,14 +23,14 @@
   <div class="control-group">
       <label class="control-label" for="expired_day">預約時限</label>
       <div class="controls">
-        <input class="input-mini required" type="text" id="expired_day" name="expired_days" placeholder="1-15">天
+        <input class="input-mini required digits" type="text" id="expired_day" name="expired_days" placeholder="1-15">天
 		<span class="help-block">預約必須在此有效期內通過審核。</span>
       </div>
   </div>
   <div class="control-group">
     <label class="control-label">借用原因</label>
     <div class="controls">
-      <textarea class="span3" rows="3" name="reason" placeholder="請填寫申請借用的目的、原因"></textarea>
+      <textarea class="span3 required" rows="3" name="reason" placeholder="請填寫申請借用的目的、原因"></textarea>
     </div>
   </div>
   <div class="control-group">
