@@ -23,7 +23,7 @@
   <div class="control-group">
       <label class="control-label" for="expired_day">預約時限</label>
       <div class="controls">
-        <input class="input-mini required digits min:1 max:15" type="text" id="expired_day" name="expired_days" placeholder="1-15">天
+        <input class="input-mini daylimits" type="text" id="expired_day" name="expired_days" placeholder="1-15">天
 		<span class="help-block">預約必須在此有效期內通過審核。</span>
       </div>
   </div>

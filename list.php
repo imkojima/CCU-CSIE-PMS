@@ -266,6 +266,13 @@ else
         $("#modal .modal-body").load(target, function() {
 			$("#modal").modal("show");
 			$("#reserveForm").validate({
+				rules:{
+					daylimits: {
+						required: true,
+						min: 1,
+						max: 15
+					}
+				},
 				highlight: function(element) {
 					$(element).closest('.control-group').removeClass('success').addClass('error');
 				},
