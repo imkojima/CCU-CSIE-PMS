@@ -320,6 +320,7 @@
     <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
     <script type="text/javascript" src="js/jquery.metadata.js"></script>
     <script type="text/javascript" src="js/jquery.tablecloth.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.js"></script>
 
     <script type="text/javascript">
       $(document).ready(function() {
@@ -342,7 +343,16 @@
 
           // load the url and show modal on success
           $("#edit .modal-body").load(target, function() {
-              $("#edit").modal("show");
+			  $("#edit").modal("show");
+			  $("#editForm").validate({
+			  	highlight: function(element) {
+					$(element).closest('.control-group').removeClass('success').addClass('error');
+				},
+				unhighlight: function(element) {
+					$(element).closest('.control-group').removeClass('error').addClass('success');
+				},
+				errorPlacement: function (error,element){}		
+			  });
           });
       });
 
