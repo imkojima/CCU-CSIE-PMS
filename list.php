@@ -268,7 +268,8 @@ else
 			$("#reserveForm").validate({
 				highlight: function(element) {
 					$(element).closest('.control-group').removeClass('success').addClass('error');
-				}			
+				},
+				errorPlacement: function (error,element){}		
 			});
         });
     });
