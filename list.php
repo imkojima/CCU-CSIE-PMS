@@ -268,8 +268,7 @@ else
 			$("#reserveForm").validate({
 				rules: {
 					daylimits: {
-						required: true,
-						digits: true
+						range: [1,15]
 					}
 				},
 				highlight: function(element) {
