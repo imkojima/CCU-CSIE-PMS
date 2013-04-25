@@ -222,4 +222,20 @@ function editUser($IDNumber,$Nname,$Ngrade,$Nphone,$Nmail, $Npermission){
 	$NDB->my_query($str,1);
 	$NDB->close();
 }
+
+//
+//	checkUserExist( $u_acc )
+//	precondition: 	給與 使用者名稱
+//	postcondition:	回傳 1:使用者存在 0:使用者不存在
+//
+function checkUserExist( $u_acc ){
+ 	$usr = new pms_db();
+	$sql = "SELECT u_id FROM `User` WHERE `u_acc` = '".$u_acc."'";
+	$result = $usr->my_query($sql,2);
+	
+	if (count($result) <= 1)
+		return 0;
+	else
+		return 1;
+}
 ?>

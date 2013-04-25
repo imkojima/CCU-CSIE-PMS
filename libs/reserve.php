@@ -60,7 +60,7 @@ function getReserveReturnList(){
 } 
 
 //   Function:  Make a new Reservation
-//   Input:     $keyword(Property Keyword) $type(type of Search) $u_id(User ID) 
+//   Input:     $keyword(Property Keyword) $type(type of Search) $u_id(User ID)(賬號名稱, u_acc in db_Users) 
 //              $date(Reservation date)  $days(delay days) 
 //              $reason(Borrow reason)  
 //   Output:    no output
@@ -156,6 +156,18 @@ function getUserReserveAccount($uacc, $type){
 function getReserveByRID( $r_id ){
     $usr = new pms_db();
     $sql = "SELECT * FROM `Reserve` WHERE r_id = '".$r_id."'";
+    $result = $usr->my_query($sql,2); 
+
+    return $result;
+}
+
+//	getReserveByPID
+//
+//	Precondition:	給予財產編號（非資料庫編號）
+//	postcondition:	回傳搜尋到 reserve 表單
+function getReserveByPID( $p_id ){
+    $usr = new pms_db();
+    $sql = "SELECT * FROM `Reserve` WHERE p_id = '".$p_id."'";
     $result = $usr->my_query($sql,2); 
 
     return $result;

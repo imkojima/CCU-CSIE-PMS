@@ -58,9 +58,6 @@
   <div class="container">
     <div class="row">
 	  <div class="">
-<?php	  /* Now using GET, will found some way to use POST */	?>
-		<form class="form-horizontal">
-			<fieldset>
 		<?php 
 			if($type == "User"){
 				if( getUserPerm($barcode) != 'empty'){
@@ -72,7 +69,19 @@
 						echo "<blockquote>無</blockquote>";
 					}else{
 						for ($i=0; $i < count( $reserves )-1; $i++) {
-							echo "<blockquote>".getPropertyName($reserves[$i]['p_id'])."(".$reserves[$i]['r_id'].") <a class=\"btn btn-primary\" href=\"scan_result.php?action=lent&r_id=".$reserves[$i]['r_id']."\">取用</a></blockquote>";
+							echo "
+							<form class=\"form-horizontal\" method=\"post\" action=\"scan_result.php\">
+								<fieldset>
+									<blockquote>".getPropertyName($reserves[$i]['p_id'])."(".$reserves[$i]['r_id'].") 
+									<input type=\"submit\" class=\"btn btn-primary\" value=\"取用\"/>
+									<div style=\"display:none;\">
+										<input class=\"hidden\" name=\"r_id\" value=\"".$reserves[$i]['r_id']."\"/>
+										<input class=\"hidden\" name=\"p_id\" value=\"".$reserves[$i]['p_id']."\"/>
+										<input class=\"hidden\" name=\"action\" value=\"lent\"/>
+									</div>
+									</blockquote>
+								</fieldset>
+							</form>";
 						}
 					}
 
@@ -82,16 +91,28 @@
 						echo "<blockquote>無</blockquote>";
 					}else{
 						for ($i=0; $i < count( $reserves )-1; $i++) {
-							echo "<blockquote>".getPropertyName($reserves[$i]['p_id'])."(".$reserves[$i]['r_id'].") <a class=\"btn btn-primary\" href=\"scan_result.php?action=return&r_id=".$reserves[$i]['r_id']."\">歸還</a></blockquote>";
+							echo "
+							<form class=\"form-horizontal\" method=\"post\" action=\"scan_result.php\">
+								<fieldset>
+									<blockquote>".getPropertyName($reserves[$i]['p_id'])."(".$reserves[$i]['r_id'].") 
+									<input type=\"submit\" class=\"btn btn-primary\" value=\"歸還\"/>
+									<div style=\"display:none;\">
+										<input class=\"hidden\" name=\"r_id\" value=\"".$reserves[$i]['r_id']."\"/>
+										<input class=\"hidden\" name=\"p_id\" value=\"".$reserves[$i]['p_id']."\"/>
+										<input class=\"hidden\" name=\"action\" value=\"return\"/>
+									</div>
+									</blockquote>
+								</fieldset>
+							</form>";
 						}
 					}
 
-					echo "<center><button onClick=\"javascript:window.history.back();\" class=\"btn btn-large\">返回</button></center>";
+					echo "<center><a href=\"scan_result.php\" class=\"btn btn-large\">返回</a></center>";
 					//找尋此學生目前所有審核過待取/借用中待還的紀錄
 				}else{
 					echo "<legend>查詢失敗</legend>";
 					echo "<h4>此編號 ".$barcode." 不存在或無任何紀錄</h4>";
-					echo "<center><button onClick=\"javascript:window.history.back();\" class=\"btn btn-large\">返回</button></center>";
+					echo "<center><a href=\"scan_result.php\" class=\"btn btn-large\">返回</a></center>";
 				}
 			}
 			if($type == "Property"){
@@ -100,25 +121,40 @@
 					echo "<legend>物品 : ".getPropertyName($pid)."(".$pid.")</legend>";
 					//找尋此物品目前狀況
 					if(getPropertyState($pid) == 1){
-						echo "目前此物品以借出予 ...";
-						echo "<a class=\"btn btn-large btn-primary\" href=\"scan_result.php?action=return&r_id=".$reserves[$i]['r_id']."\">歸還</a>";
+						$reserve = getReserveByPID($pid);
+						echo "目前此物品以借出予 <strong>".$reserve['']['u_id']."</strong>";
+						echo "
+						<form class=\"form-horizontal\" method=\"post\" action=\"scan_result.php\">
+							<fieldset>
+								<input type=\"submit\" class=\"btn btn-primary\" value=\"歸還\"/>
+								<div style=\"display:none;\">
+									<input class=\"hidden\" name=\"r_id\" value=\"".$reserve['']['r_id']."\"/>
+									<input class=\"hidden\" name=\"p_id\" value=\"".$reserve['']['p_id']."\"/>
+									<input class=\"hidden\" name=\"action\" value=\"return\"/>
+								</div>
+							</fieldset>
+						</form>";
 					}else{	
 						echo "目前此物品尚未借出<hr/>";
 ?>
-            <div class="control-group">
-              <label class="control-label">條碼 (學生證)</label>
-              <div class="controls">
-                <input id="barcode" type="text" class="input-xxlarge" name="barcode" placeholder="">
-              </div>
-            </div>
+		<form class="form-horizontal" method="post" action="scan_result.php">
+			<fieldset>
+	            <div class="control-group">
+	              <label class="control-label">條碼 (學生證)</label>
+	              <div class="controls">
+	                <input id="barcode" type="text" class="input-xxlarge" name="barcode" placeholder="">
+	              </div>
+	            </div>
 
-            <div class="control-group">
-              <div class="controls">
-                <button type="submit" class="btn btn-large btn-primary">借出</button>
-                <a onClick="javascript:window.history.back();" class="btn btn-large">取消</a>
-              </div>
-            </div>
-          </fieldset>
+	            <div class="control-group">
+	              <div class="controls">
+	                <input type="submit" class="btn btn-large btn-primary" value="借出">
+	                <a href="scan_result.php" class="btn btn-large">取消</a>
+	                <input class="hidden" name="p_id" value="<?php echo "$pid";?>"/>
+	                <input class="hidden" name="action" value="walkinService"/>
+	              </div>
+	            </div>
+			</fieldset>
         </form> 
 <?php
 					}

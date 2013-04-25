@@ -20,9 +20,10 @@
   require_once($PATH."auth.php");
   require_once($PATH."libs/logs.php");
   require_once($PATH."libs/reserve.php");
+  require_once($PATH."libs/users.php");
   require_once($PATH."libs/property.php");
-  
-  
+
+
   // Todo:
   // 1. Modal can't show on loading.
 ?>
@@ -45,13 +46,51 @@
   </head>
 
   <body>
-  
-  <?php
-  if($_GET['action'] == "lent")
-  	echo "<h3>LENT</h3><br>";
-  elseif ($_GET['action'] == "return")
-  	echo "<h3>RETURN</h3><br>";
-  ?>
+
+<?php
+      if($_POST['action'] == "lent") {
+          echo "
+          <div class=\"alert fade in\" id=\"resultMsg\" role=\"dialog\">
+	          <button class=\"close\" data-dismiss=\"alert\">×</button>
+	          <strong>成功借出，預約編號:".$_POST["r_id"]."</strong>
+          </div>";
+
+          lentReserve( $_POST["r_id"] );
+          makeLog("System", "借出預約 - [R:".$_POST['r_id']."][P:".$_POST["p_id"]."]");
+      }elseif ($_POST['action'] == "return") {
+        echo "
+          <div class=\"alert fade in\" id=\"resultMsg\" role=\"dialog\">
+	          <button class=\"close\" data-dismiss=\"alert\">×</button>
+	          <strong>成功歸還，預約編號:".$_POST["r_id"]."</strong>
+          </div>";
+		returnReserve( $_POST["r_id"] );
+		makeLog("System", "歸還預約 - [R:".$_POST['r_id']."][P:".$_POST["p_id"]."]");
+      }
+      elseif ($_POST['action'] == "walkinService") {
+    	$uid = $_POST['barcode'];
+      	if ( checkUserExist($uid) == 0 ) {
+      		echo "
+      		<div class=\"alert fade in alert-error\" id=\"resultMsg\" role=\"dialog\">
+		          <button class=\"close\" data-dismiss=\"alert\">×</button>
+		          <strong>預約失敗，使用者不存在</strong>
+			</div>";
+		}
+      	else {
+			$results = makeReserve($_POST['p_id'], 'id', $uid, date( "Y-m-d H:i:s" ), '0', '現場辦理借用');
+			
+			$reserve = getReserveByPID($_POST['p_id']);
+	        echo "
+	          <div class=\"alert fade in\" id=\"resultMsg\" role=\"dialog\">
+		          <button class=\"close\" data-dismiss=\"alert\">×</button>
+		          <strong>現場借用，預約編號:".$reserve['']['r_id']."</strong>
+	          </div>";
+				
+			lentReserve( $reserve['']['r_id'] );
+			makeLog("System", "現場借用 - [R:".$reserve['']['r_id']."][P:".$_POST['p_id']."]");
+		}
+	}
+?>
+
 
   <div class="container">
     <div class="row">
@@ -80,50 +119,9 @@
       <div class="footer">
         <hr />
         <p>Property Management System - &#169;2012 Dept. of CSIE, National Chung Cheng University</p>
-      </div>   
+      </div>
   </div>
-  
-  <?php
-      if($_GET['action'] == "lent") {
-          echo "
-          <div class=\"modal hide\" id=\"resultMsg\" role=\"dialog\">
-            <div class=\"modal-header\">
-              <button class=\"close\" data-dismiss=\"modal\">×</button>
-              <h3>成功借出</h3>
-            </div>
-            <div class=\"modal-body\">";
-          echo "預約編號:".$_GET["r_id"];
-          echo "
-          </div>
-          <div class=\"modal-footer\">
-            <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
-          </div>
-          </div>";
-          lentReserve( $_GET["r_id"] );
-          $property = getReserveByRID( $_GET["r_id"] );
-          makeLog("System", "借出預約 - [R:".$_GET['r_id']."][P:".$property['']['p_id']."]");
-      }elseif ($_GET['action'] == "return") {
-        echo "
-        <div class=\"modal hide\" id=\"resultMsg\" role=\"dialog\">
-          <div class=\"modal-header\">
-            <button class=\"close\" data-dismiss=\"modal\">×</button>
-            <h3>歸還成功</h3>
-          </div>
-          <div class=\"modal-body\">";
-        echo "預約編號:".$_GET["r_id"];
-        echo "
-        </div>
-        <div class=\"modal-footer\">
-          <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
-        </div>
-        </div>";
-		returnReserve( $_GET["r_id"] );
-		$property = getReserveByRID( $_GET["r_id"] );
-		makeLog("System", "歸還預約 - [R:".$_GET['r_id']."][P:".$property['']['p_id']."]");
 
-      }
-    ?>
-    
 	<script type="text/javascript">
 		$(window).load(function() {
         $('#resultMsg').modal('show');
@@ -134,7 +132,7 @@
 	</script>
   <script type="text/javascript">
     document.getElementById("barcode").focus();
-    
+
   </script>
   <script type="text/javascript" src="../js/jquery.js"></script>
   <script type="text/javascript" src="../js/bootstrap.js"></script>
