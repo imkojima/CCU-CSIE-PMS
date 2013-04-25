@@ -15,6 +15,16 @@
     You should have received a copy of the GNU General Public License
     along with CCU CSIE Property Management System.  If not, see <http://www.gnu.org/licenses/>.
 */
+
+  $PATH="../";
+  require_once($PATH."auth.php");
+  require_once($PATH."libs/logs.php");
+  require_once($PATH."libs/reserve.php");
+  require_once($PATH."libs/property.php");
+  
+  
+  // Todo:
+  // 1. Modal can't show on loading.
 ?>
 <!DOCTYPE html>
 <html lang="zh-tw">
@@ -35,6 +45,13 @@
   </head>
 
   <body>
+  
+  <?php
+  if($_GET['action'] == "lent")
+  	echo "<h3>LENT</h3><br>";
+  elseif ($_GET['action'] == "return")
+  	echo "<h3>RETURN</h3><br>";
+  ?>
 
   <div class="container">
     <div class="row">
@@ -65,9 +82,59 @@
         <p>Property Management System - &#169;2012 Dept. of CSIE, National Chung Cheng University</p>
       </div>   
   </div>
+  
+  <?php
+      if($_GET['action'] == "lent") {
+          echo "
+          <div class=\"modal hide\" id=\"resultMsg\" role=\"dialog\">
+            <div class=\"modal-header\">
+              <button class=\"close\" data-dismiss=\"modal\">×</button>
+              <h3>成功借出</h3>
+            </div>
+            <div class=\"modal-body\">";
+          echo "預約編號:".$_GET["r_id"];
+          echo "
+          </div>
+          <div class=\"modal-footer\">
+            <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
+          </div>
+          </div>";
+          lentReserve( $_GET["r_id"] );
+          $property = getReserveByRID( $_GET["r_id"] );
+          makeLog("System", "借出預約 - [R:".$_GET['r_id']."][P:".$property['']['p_id']."]");
+      }elseif ($_GET['action'] == "return") {
+        echo "
+        <div class=\"modal hide\" id=\"resultMsg\" role=\"dialog\">
+          <div class=\"modal-header\">
+            <button class=\"close\" data-dismiss=\"modal\">×</button>
+            <h3>歸還成功</h3>
+          </div>
+          <div class=\"modal-body\">";
+        echo "預約編號:".$_GET["r_id"];
+        echo "
+        </div>
+        <div class=\"modal-footer\">
+          <a href=\"#\" class=\"btn btn-primary\" data-dismiss=\"modal\">關閉</a>
+        </div>
+        </div>";
+		returnReserve( $_GET["r_id"] );
+		$property = getReserveByRID( $_GET["r_id"] );
+		makeLog("System", "歸還預約 - [R:".$_GET['r_id']."][P:".$property['']['p_id']."]");
+
+      }
+    ?>
+    
+	<script type="text/javascript">
+		$(window).load(function() {
+        $('#resultMsg').modal('show');
+    });
+	    $("#resultMsg").on('hidden', function() {
+	        location.reload();
+	    });
+	</script>
   <script type="text/javascript">
     document.getElementById("barcode").focus();
-
+    
   </script>
   <script type="text/javascript" src="../js/jquery.js"></script>
   <script type="text/javascript" src="../js/bootstrap.js"></script>

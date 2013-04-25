@@ -58,6 +58,9 @@
   <div class="container">
     <div class="row">
 	  <div class="">
+<?php	  /* Now using GET, will found some way to use POST */	?>
+		<form class="form-horizontal">
+			<fieldset>
 		<?php 
 			if($type == "User"){
 				if( getUserPerm($barcode) != 'empty'){
@@ -69,7 +72,7 @@
 						echo "<blockquote>無</blockquote>";
 					}else{
 						for ($i=0; $i < count( $reserves )-1; $i++) {
-							echo "<blockquote>".getPropertyName($reserves[$i]['p_id'])."(".$reserves[$i]['r_id'].") <button class=\"btn btn-primary\">取用</button></blockquote>";
+							echo "<blockquote>".getPropertyName($reserves[$i]['p_id'])."(".$reserves[$i]['r_id'].") <a class=\"btn btn-primary\" href=\"scan_result.php?action=lent&r_id=".$reserves[$i]['r_id']."\">取用</a></blockquote>";
 						}
 					}
 
@@ -79,7 +82,7 @@
 						echo "<blockquote>無</blockquote>";
 					}else{
 						for ($i=0; $i < count( $reserves )-1; $i++) {
-							echo "<blockquote>".getPropertyName($reserves[$i]['p_id'])."(".$reserves[$i]['r_id'].") <button class=\"btn btn-primary\">歸還</button></blockquote>";
+							echo "<blockquote>".getPropertyName($reserves[$i]['p_id'])."(".$reserves[$i]['r_id'].") <a class=\"btn btn-primary\" href=\"scan_result.php?action=return&r_id=".$reserves[$i]['r_id']."\">歸還</a></blockquote>";
 						}
 					}
 
@@ -98,12 +101,10 @@
 					//找尋此物品目前狀況
 					if(getPropertyState($pid) == 1){
 						echo "目前此物品以借出予 ...";
-						echo "<button class=\"btn btn-large btn-primary\">歸還</button>";
+						echo "<a class=\"btn btn-large btn-primary\" href=\"scan_result.php?action=return&r_id=".$reserves[$i]['r_id']."\">歸還</a>";
 					}else{	
 						echo "目前此物品尚未借出<hr/>";
 ?>
-         <form class="form-horizontal" action="scan_result.php">
-          <fieldset>
             <div class="control-group">
               <label class="control-label">條碼 (學生證)</label>
               <div class="controls">
