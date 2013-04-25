@@ -23,9 +23,6 @@
   require_once($PATH."libs/users.php");
   require_once($PATH."libs/property.php");
 
-
-  // Todo:
-  // 1. Modal can't show on loading.
 ?>
 <!DOCTYPE html>
 <html lang="zh-tw">
@@ -78,13 +75,14 @@
       	else {
 			$results = makeReserve($_POST['p_id'], 'id', $uid, date( "Y-m-d H:i:s" ), '0', '現場辦理借用');
 			
-			$reserve = getReserveByPID($_POST['p_id']);
+			$reserve = getReserveByPIDnUID($_POST['p_id'], $uid);
+			
 	        echo "
 	          <div class=\"alert fade in\" id=\"resultMsg\" role=\"dialog\">
 		          <button class=\"close\" data-dismiss=\"alert\">×</button>
 		          <strong>現場借用，預約編號:".$reserve['']['r_id']."</strong>
 	          </div>";
-				
+
 			lentReserve( $reserve['']['r_id'] );
 			makeLog("System", "現場借用 - [R:".$reserve['']['r_id']."][P:".$_POST['p_id']."]");
 		}

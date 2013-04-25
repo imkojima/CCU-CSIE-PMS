@@ -163,11 +163,23 @@ function getReserveByRID( $r_id ){
 
 //	getReserveByPID
 //
-//	Precondition:	給予財產編號（非資料庫編號）
+//	Precondition:	給予財產資料庫編號,
 //	postcondition:	回傳搜尋到 reserve 表單
 function getReserveByPID( $p_id ){
     $usr = new pms_db();
-    $sql = "SELECT * FROM `Reserve` WHERE p_id = '".$p_id."'";
+    $sql = "SELECT * FROM `Reserve` WHERE p_id = '".$p_id."' AND `r_state`=2";
+    $result = $usr->my_query($sql,2); 
+
+    return $result;
+}
+
+//	getReserveByPIDnUID
+//
+//	Precondition:	給予財產資料庫編號, user account
+//	postcondition:	回傳搜尋到 reserve 表單
+function getReserveByPIDnUID( $p_id, $u_id ){
+    $usr = new pms_db();
+    $sql = "SELECT * FROM `Reserve` WHERE p_id = '".$p_id."' AND `u_id` = '".$u_id."' AND (`r_state`=0 OR `r_state`=1)";
     $result = $usr->my_query($sql,2); 
 
     return $result;
