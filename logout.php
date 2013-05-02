@@ -19,9 +19,10 @@
 	require_once('auth.php');
 	require_once('libs/logs.php');
  	makeLog($_SESSION['ccupms_acc'], '手動登出');
-    unset($_SESSION['ccupms_idy']);
+        unset($_SESSION['ccupms_idy']);
 	unset($_SESSION['ccupms_acc']);
 	unset($_SESSION['admin_idy']);
+	unset($_SESSION['teacher_idy']);
 ?>
 <!DOCTYPE html>
 <html lang="zh-tw">
